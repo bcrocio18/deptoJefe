@@ -1,0 +1,22 @@
+.nav{
+  background:#07324d;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.wrap{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 16px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.link{
+  color:#eaf4ff;
+  text-decoration:none;
+  padding:10px 12px;
+  border-radius:10px;
+  font-weight:800;
+  font-size:12px;
+}
+.link:hover{ background:rgba(255,255,255,.10); }
+.link.active{ background:rgba(255,255,255,.16); }

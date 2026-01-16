@@ -1,0 +1,101 @@
+<app-topbar></app-topbar>
+<app-navbar></app-navbar>
+
+<main class="page">
+  <div class="title">
+    <h1>Menú principal · Jefes de Departamento</h1>
+    <p>Gestión académica, matrícula, laboratorios y control desde un solo lugar.</p>
+  </div>
+
+  <!-- Tarjeta de datos del jefe -->
+  <section class="card">
+    <div class="card-head">
+      <h2>Datos del Jefe de Departamento</h2>
+
+      <a class="pdf" href="#">
+        <span class="badge">PDF</span>
+        <span>Instructivo Jefes</span>
+        <small>2.40 MB</small>
+      </a>
+    </div>
+
+    <div class="info">
+      <div class="row">
+        <span class="label">No. Empleado</span>
+        <span class="value">98766</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Nombre</span>
+        <span class="value">USUARIO DE PRUEBAS DE SISTEMA</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Centro</span>
+        <span class="value">CIUDAD UNIVERSITARIA</span>
+      </div>
+
+      <div class="btns">
+        <button class="btn">Ver censo académico</button>
+        <button class="btn ghost">Ver calificaciones parciales</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menú Matrícula -->
+  <section class="menu">
+    <div class="menu-title">Menú de Opciones de Matrícula Pregrado</div>
+
+    <nav class="menubar">
+      <div class="item" (mouseenter)="open('plan')" (mouseleave)="close('plan')">
+        <button class="item-btn" type="button">Planificación ▾</button>
+        <div class="drop" [class.show]="isOpen('plan')">
+          <a href="#">Planificación Académica</a>
+          <a href="#">Control de Cupos</a>
+          <a href="#">Aulas Asignadas</a>
+          <a href="#">Estado de matrícula</a>
+          <a href="#">Coordinadores Asignatura</a>
+          <a href="#">Reprobación Masiva</a>
+        </div>
+      </div>
+
+      <a class="item-link" href="#">Inscripción y Cancelación</a>
+      <a class="item-link" href="#">Información de Estudiante</a>
+
+      <div class="item" (mouseenter)="open('calif')" (mouseleave)="close('calif')">
+        <button class="item-btn" type="button">Registro de Calificaciones ▾</button>
+        <div class="drop" [class.show]="isOpen('calif')">
+          <a href="#">Reiniciar Clave Profesor</a>
+          <a href="#">Ver estudiantes matriculados</a>
+          <a href="#">Ver calificaciones ingresadas</a>
+          <a href="#">Evaluación Docente</a>
+        </div>
+      </div>
+
+      <div class="item" (mouseenter)="open('prev')" (mouseleave)="close('prev')">
+        <button class="item-btn" type="button">Planificación Anterior ▾</button>
+        <div class="drop" [class.show]="isOpen('prev')">
+          <a href="#">Ver planificación</a>
+          <a href="#">Editar planificación</a>
+        </div>
+      </div>
+
+      <a class="item-link" href="#">Baja Matrícula</a>
+    </nav>
+  </section>
+
+  <!-- Menú Laboratorios -->
+  <section class="menu">
+    <div class="menu-title">Menú de Opciones de Programación de Laboratorios y Prácticas</div>
+
+    <nav class="menubar">
+      <a class="item-link" href="#">Planificación Académica</a>
+      <a class="item-link" href="#">Control de Cupos</a>
+      <a class="item-link" href="#">Recaudaciones de Laboratorios</a>
+      <a class="item-link" href="#">Matrícula Laboratorios</a>
+      <a class="item-link" href="#">Planificación Anterior</a>
+    </nav>
+  </section>
+
+  <app-footer></app-footer>
+</main>
