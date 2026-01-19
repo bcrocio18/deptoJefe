@@ -1,101 +1,224 @@
-<app-topbar></app-topbar>
-<app-navbar></app-navbar>
+<div class="unah-layout">
 
-<main class="page">
-  <div class="title">
-    <h1>Menú principal · Jefes de Departamento</h1>
-    <p>Gestión académica, matrícula, laboratorios y control desde un solo lugar.</p>
-  </div>
+  <!-- HEADER (texto a la izquierda + logo a la derecha) -->
+  <header class="unah-header">
+    <div class="unah-header__inner">
 
-  <!-- Tarjeta de datos del jefe -->
-  <section class="card">
-    <div class="card-head">
-      <h2>Datos del Jefe de Departamento</h2>
+      <div class="unah-header__center">
+        <div class="unah-header__mini">UNAH ▾</div>
+        <div class="unah-header__title">SISTEMA DE REGISTRO</div>
+        <div class="unah-header__subtitle">Jefes de Departamento · DIPP</div>
+      </div>
 
-      <a class="pdf" href="#">
-        <span class="badge">PDF</span>
-        <span>Instructivo Jefes</span>
-        <small>2.40 MB</small>
-      </a>
+      <div class="unah-header__right">
+        <img class="unah-logo unah-logo--white" src="assets/images/logo-unah-blanco.png" alt="UNAH" />
+      </div>
+
     </div>
+  </header>
 
-    <div class="info">
-      <div class="row">
-        <span class="label">No. Empleado</span>
-        <span class="value">98766</span>
+  <!-- NAVBAR (PC normal, móvil hamburguesa) -->
+  <nav class="unah-nav" aria-label="Navegación principal">
+    <div class="unah-nav__inner">
+
+      <input class="navToggle" type="checkbox" id="navToggle">
+      <label class="navBurger" for="navToggle">☰ Menú</label>
+      <label class="navOverlay" for="navToggle" aria-hidden="true"></label>
+
+      <div class="unah-nav__links">
+      <!-- Botón cerrar (aparece solo cuando está abierto) -->
+      <label class="navClose" for="navToggle">✕ Cerrar</label>
+
+        <a class="unah-nav__link" href="#">Inicio</a>
+
+        <details #ddPre class="unah-nav__dd nav-acc">
+        <summary class="unah-nav__link" (click)="openOnly(ddPre, $event)">
+          Sistema de pregrado <span class="caret">▾</span>
+        </summary>
+        <div class="unah-nav__menu">
+          <a href="#">Estudiantes</a>
+          <a href="#">Profesores</a>
+          <a href="#" class="is-current">Jefes de departamento</a>
+          <a href="#">Coordinadores de carrera</a>
+        </div>
+      </details>
+
+      <details #ddPost class="unah-nav__dd nav-acc">
+        <summary class="unah-nav__link" (click)="openOnly(ddPost, $event)">
+          Sistema de postgrado <span class="caret">▾</span>
+        </summary>
+        <div class="unah-nav__menu">
+          <a href="#">Solicitudes de ingreso</a>
+          <a href="#">Oferta académica</a>
+          <a href="#">Servicio al estudiante</a>
+          <a href="#">Coordinación de postgrados</a>
+          <a href="#">Registro de calificaciones</a>
+        </div>
+      </details>
+
+      <details #ddAdmin class="unah-nav__dd nav-acc">
+        <summary class="unah-nav__link" (click)="openOnly(ddAdmin, $event)">
+          Administración <span class="caret">▾</span>
+        </summary>
+        <div class="unah-nav__menu">
+          <a href="#">Dirección académica</a>
+          <a href="#">Comisionado universitario</a>
+          <a href="#">Tesorería</a>
+          <a href="#">Decanos</a>
+          <a href="#">DIPP</a>
+          <a href="#">SEAPI</a>
+        </div>
+      </details>
+
+
+        <a class="unah-nav__link" href="#">Contáctenos</a>
+
+        <div class="unah-nav__spacer"></div>
+
+        <a class="unah-nav__action" href="#">Cambiar clave</a>
+        <a class="unah-nav__action" href="#">Cerrar sesión</a>
       </div>
 
-      <div class="row">
-        <span class="label">Nombre</span>
-        <span class="value">USUARIO DE PRUEBAS DE SISTEMA</span>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="unah-main">
+    <div class="unah-container">
+
+      <section class="unah-pageTitle">
+        <h1>Servicios del Jefe de Departamento</h1>
+        <p>
+          Bienvenid&#64;: <strong>HELLEN ROCIO PINEL BACA</strong>,
+          correo institucional: <a href="#" class="link">hellen.pinel&#64;unah.edu.hn</a>
+        </p>
+      </section>
+
+      <section class="card">
+        <div class="card__bar">
+          <span>Datos del Jefe de Departamento</span>
+
+          <a class="pdfLink" href="#">
+            <span class="pdfIcon">PDF</span>
+            <span class="pdfText">Instructivo Jefes</span>
+            <span class="pdfSize">2.40 MB</span>
+          </a>
+        </div>
+
+        <div class="card__body">
+          <div class="profileGrid">
+            <div class="profileLeft">
+              <img class="profileAvatar" src="assets/images/perfil.png" alt="UNAH" />
+            </div>
+
+            <div class="profileRight">
+              <div class="kv">
+                <div class="k">No. Empleado:</div>
+                <div class="v">12345</div>
+              </div>
+
+              <div class="kv">
+                <div class="k">Nombre:</div>
+                <div class="v">HELLEN ROCIO PINEL BACA</div>
+              </div>
+
+              <div class="kv">
+                <div class="k">Centro:</div>
+                <div class="v">CIUDAD UNIVERSITARIA</div>
+              </div>
+
+              <div class="btnRow">
+                <button class="btn btn-outline" type="button">Ver censo académico</button>
+                <button class="btn btn-solid" type="button">Ver Calificaciones Parciales</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="block__title">Menú de Opciones de Matrícula Pregrado</div>
+
+        <div class="menuGrid">
+          <details class="menuDetails">
+            <summary class="menuItem">
+              <span class="dot"></span> Planificación Académica <span class="caret2">▾</span>
+            </summary>
+            <div class="menuSub">
+              <a href="#">Planeación académica</a>
+              <a href="#">Control de cupos</a>
+              <a href="#">Aulas asignadas</a>
+              <a href="#">Estado de matrícula</a>
+              <a href="#">Coordinadores asignatura</a>
+              <a href="#">Reprobación masiva</a>
+            </div>
+          </details>
+          <a class="menuItem" href="#"><span class="dot"></span> Inscripción y Cancelación</a>
+          <a class="menuItem" href="#"><span class="dot"></span> Información de Estudiante</a>
+
+          <details class="menuDetails">
+            <summary class="menuItem">
+              <span class="dot"></span> Registro de Calificaciones <span class="caret2">▾</span>
+            </summary>
+            <div class="menuSub">
+              <a href="#">Reiniciar clave de profesor</a>
+              <a href="#">Ver estudiantes matriculados</a>
+              <a href="#">Ver calificaciones ingresadas</a>
+              <a href="#">Evaluación Docente</a>
+            </div>
+          </details>
+
+          <details class="menuDetails">
+            <summary class="menuItem">
+              <span class="dot"></span>Planificación Anterior<span class="caret2">▾</span>
+            </summary>
+            <div class="menuSub">
+              <a href="#">Ver planificación</a>
+              <a href="#">Editar planificación</a>
+            </div>
+          </details>
+          
+          <a class="menuItem danger" href="#"><span class="dot"></span> Baja Matrícula</a>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="block__title">Menú de Opciones de Programación de Laboratorios y de Prácticas</div>
+
+        <div class="menuGrid">
+          <a class="menuItem" href="#"><span class="dot"></span> Planificación Académica</a>
+          <a class="menuItem" href="#"><span class="dot"></span> Control de Cupos</a>
+          <a class="menuItem" href="#"><span class="dot"></span> Recaudaciones de Laboratorios</a>
+          <a class="menuItem" href="#"><span class="dot"></span> Matrícula Laboratorios</a>
+          <details class="menuDetails">
+            <summary class="menuItem">
+              <span class="dot"></span>Planificación Anterior<span class="caret2">▾</span>
+            </summary>
+            <div class="menuSub">
+              <a href="#">Ver planificación</a>
+              <a href="#">Editar planificación</a>
+            </div>
+          </details>  
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="unah-footer">
+    <div class="unah-footer__inner">
+      <div class="fLeft">
+        <div class="fTitle">SISTEMA DE REGISTRO</div>
+        <div class="fText">Ciudad Universitaria Tegucigalpa, M.D.C. Honduras</div>
+        <div class="fText">consultas_dipp&#64;unah.edu.hn</div>
       </div>
 
-      <div class="row">
-        <span class="label">Centro</span>
-        <span class="value">CIUDAD UNIVERSITARIA</span>
-      </div>
-
-      <div class="btns">
-        <button class="btn">Ver censo académico</button>
-        <button class="btn ghost">Ver calificaciones parciales</button>
+      <div class="fRight">
+        <img class="unah-footerLogo" src="assets/images/logo-unah-blanco.png" alt="UNAH" />
+        <div class="fCopy">© 2026 Universidad Nacional Autónoma de Honduras</div>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <!-- Menú Matrícula -->
-  <section class="menu">
-    <div class="menu-title">Menú de Opciones de Matrícula Pregrado</div>
-
-    <nav class="menubar">
-      <div class="item" (mouseenter)="open('plan')" (mouseleave)="close('plan')">
-        <button class="item-btn" type="button">Planificación ▾</button>
-        <div class="drop" [class.show]="isOpen('plan')">
-          <a href="#">Planificación Académica</a>
-          <a href="#">Control de Cupos</a>
-          <a href="#">Aulas Asignadas</a>
-          <a href="#">Estado de matrícula</a>
-          <a href="#">Coordinadores Asignatura</a>
-          <a href="#">Reprobación Masiva</a>
-        </div>
-      </div>
-
-      <a class="item-link" href="#">Inscripción y Cancelación</a>
-      <a class="item-link" href="#">Información de Estudiante</a>
-
-      <div class="item" (mouseenter)="open('calif')" (mouseleave)="close('calif')">
-        <button class="item-btn" type="button">Registro de Calificaciones ▾</button>
-        <div class="drop" [class.show]="isOpen('calif')">
-          <a href="#">Reiniciar Clave Profesor</a>
-          <a href="#">Ver estudiantes matriculados</a>
-          <a href="#">Ver calificaciones ingresadas</a>
-          <a href="#">Evaluación Docente</a>
-        </div>
-      </div>
-
-      <div class="item" (mouseenter)="open('prev')" (mouseleave)="close('prev')">
-        <button class="item-btn" type="button">Planificación Anterior ▾</button>
-        <div class="drop" [class.show]="isOpen('prev')">
-          <a href="#">Ver planificación</a>
-          <a href="#">Editar planificación</a>
-        </div>
-      </div>
-
-      <a class="item-link" href="#">Baja Matrícula</a>
-    </nav>
-  </section>
-
-  <!-- Menú Laboratorios -->
-  <section class="menu">
-    <div class="menu-title">Menú de Opciones de Programación de Laboratorios y Prácticas</div>
-
-    <nav class="menubar">
-      <a class="item-link" href="#">Planificación Académica</a>
-      <a class="item-link" href="#">Control de Cupos</a>
-      <a class="item-link" href="#">Recaudaciones de Laboratorios</a>
-      <a class="item-link" href="#">Matrícula Laboratorios</a>
-      <a class="item-link" href="#">Planificación Anterior</a>
-    </nav>
-  </section>
-
-  <app-footer></app-footer>
-</main>
+</div>
