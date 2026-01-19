@@ -523,6 +523,33 @@ a{ color: inherit; }
   padding: 16px 20px;
 }
 
+.fBrand a img {
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.fBrand a img:hover {
+  transform: scale(1.05);
+  opacity: 0.85;
+}
+
+.fCopy a:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.fCopy a {
+  color: inherit;        /* mismo color del texto */
+  text-decoration: none; /* sin subrayado */
+  font-weight: normal;
+}
+
+.fCopy a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+
 /* Marca */
 .fBrand {
   display: flex;
