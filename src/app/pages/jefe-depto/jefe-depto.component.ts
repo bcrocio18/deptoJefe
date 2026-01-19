@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 
-type MenuKey = 'matricula' | 'laboratorios';
+type NavbarKey = 'matricula' | 'laboratorios';
+type MainKey =
+  | 'planificacion'
+  | 'calificaciones'
+  | 'anterior'
+  | 'labs-anterior';
 
 @Component({
   selector: 'app-jefe-depto',
@@ -8,6 +13,8 @@ type MenuKey = 'matricula' | 'laboratorios';
   styleUrls: ['./jefe-depto.component.css']
 })
 export class JefeDeptoComponent {
+
+  /* ===== NAVBAR (NO SE TOCA) ===== */
   openDrop: string | null = null;
 
   open(key: string){ this.openDrop = key; }
@@ -15,16 +22,25 @@ export class JefeDeptoComponent {
   isOpen(key: string){ return this.openDrop === key; }
 
   openOnly(target: HTMLDetailsElement, ev: MouseEvent) {
-  ev.preventDefault(); // evita el toggle nativo del <details>
+    ev.preventDefault();
 
-  const wasOpen = target.open;
+    const wasOpen = target.open;
 
-  // cerrar todos
-  document.querySelectorAll<HTMLDetailsElement>('details.nav-acc')
-    .forEach(d => d.open = false);
+    document
+      .querySelectorAll<HTMLDetailsElement>('details.nav-acc')
+      .forEach(d => d.open = false);
 
-  // si no estaba abierto, abrilo; si ya estaba, queda cerrado
-  target.open = !wasOpen;
-}
+    target.open = !wasOpen;
+  }
 
+  /* ===== MAIN (ACORDEÓN LIMPIO) ===== */
+  openMain: MainKey | null = null;
+
+  toggleMain(key: MainKey) {
+    this.openMain = this.openMain === key ? null : key;
+  }
+
+  isMainOpen(key: MainKey): boolean {
+    return this.openMain === key;
+  }
 }

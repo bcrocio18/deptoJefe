@@ -8,7 +8,7 @@
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: "Segoe UI", Roboto, Arial, system-ui;
+  font-family: "Segoe UI", Arial, system-ui;
 }
 
 /* ===== BASE ===== */
@@ -307,10 +307,11 @@ a{ color: inherit; }
 }
 .btn-outline:hover{ background: #f1f6ff; }
 .btn-solid{
-  background: var(--accent);
-  color: #fff;
+    background: #fff;
+  border: 1px solid var(--accent);
+  color: var(--accent);
 }
-.btn-solid:hover{ filter: brightness(1.03); }
+.btn-solid:hover{background: #f1f6ff;}
 
 /* ===== Blocks ===== */
 .block{ margin-top: 16px; }
@@ -329,8 +330,9 @@ a{ color: inherit; }
   border-top: none;
   padding: 12px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 10px;
+    align-items: start;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
   background: #fff;
   border-radius: 0 0 12px 12px;
 }
@@ -340,7 +342,7 @@ a{ color: inherit; }
   border: 1px solid #e6eef7;
   padding: 10px 10px;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 750;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -397,7 +399,7 @@ a{ color: inherit; }
   padding: 10px 12px;
   text-decoration: none;
   color: #0f172a;
-  font-weight: 800;
+  font-weight: 400;
   font-size: 13px;
   border-bottom: 1px solid rgba(230,235,242,.9);
 }
@@ -485,7 +487,7 @@ a{ color: inherit; }
 /* POR DEFECTO (ESCRITORIO): ocultar botón cerrar y overlay */
 .navClose,
 .navOverlay{
-  display: none !important;
+  display: none;
 }
 
 /* ===== Acordeón (solo muestra el menú del details abierto) ===== */
@@ -535,9 +537,10 @@ a{ color: inherit; }
     z-index: 950;
   }
 
+
   /* Botón cerrar adentro del menú */
   .navClose{
-    display: none;
+    display: block;
     cursor: pointer;
     color: #fff;
     font-weight: 900;
