@@ -277,8 +277,8 @@ a{ color: inherit; }
   object-fit: contain;
   border: 1px solid var(--line);
   background: #fff;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 0.01px;
+  border-radius: 50px;
 }
 .kv{
   display: grid;
@@ -369,9 +369,18 @@ a{ color: inherit; }
 }
 
 /* details dropdown inside grid */
-.menuDetails{ border: none; }
-.menuDetails summary{ list-style: none; cursor: pointer; }
-.menuDetails summary::-webkit-details-marker{ display:none; }
+.menuDetails{ 
+  border: none; 
+}
+
+.menuDetails summary{ 
+  list-style: none; 
+  cursor: pointer; 
+}
+
+.menuDetails summary::-webkit-details-marker{ 
+  display:none; 
+}
 
 .caret2{
   margin-left: auto;
@@ -439,50 +448,139 @@ a{ color: inherit; }
 }
 
 /* ===== FOOTER ===== */
-.unah-footer{
-  margin-top: 24px;
-  position: relative;
-  overflow: hidden;
-  background: var(--unah-blue-2);
-  color: rgba(255,255,255,.92);
+.unah-footer {
+  width: 100%;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #fff;
 }
 
-/* difuminado sutil */
-.unah-footer::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 15% 40%, rgba(255,255,255,.10), transparent 45%),
-    radial-gradient(circle at 85% 20%, rgba(242,183,5,.12), transparent 40%);
-  filter: blur(6px);
-  opacity: .9;
-  pointer-events:none;
+/* ===== FRANJA SUPERIOR ===== */
+.unah-footer-top {
+  background: #003a6d; 
 }
 
-.unah-footer__inner{
-  position: relative;
+.unah-footer__inner {
   max-width: 1320px;
   margin: 0 auto;
-  padding: 18px 16px;
+  padding: 10px 18px;
   display: flex;
-  gap: 16px;
-  align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
 }
 
-.fTitle{
-  color: var(--unah-gold);
-  font-weight: 900;
-  letter-spacing: .04em;
+/* Izquierda */
+.fLeft {
+  max-width: 80%;
 }
-.fText{ font-size: 12px; font-weight: 800; opacity: .95; margin-top: 4px; }
 
-.unah-footerLogo{ height: 32px; width: auto; }
-.fCopy{ font-size: 12px; font-weight: 800; opacity: .9; margin-top: 6px; }
+.fTitle {
+  color: #f2b705;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
 
-.fRight{ text-align: right; }
+.fLeft p {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 4px 0;
+  opacity: 0.95;
+}
+
+/* Redes */
+.fSocial {
+  display: flex;
+  gap: 14px;
+}
+
+.fSocial a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #003a6d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.fSocial a:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+/* ===== FRANJA INFERIOR ===== */
+.unah-footer-bottom {
+  background: #002e57; /* Azul más oscuro */
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.unah-footer__inner.bottom {
+  padding: 16px 20px;
+}
+
+/* Marca */
+.fBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fBrand img {
+  height: 65px;
+}
+
+.fBrand span {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* Copyright */
+.fCopy {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .unah-footer-top .unah-footer__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .fLeft {
+    max-width: 100%;
+  }
+
+  /* Logo a la derecha */
+  .fBrand {
+    order: 1;  
+    font-size: 11px;                   
+  }
+
+  /* Copy a la izquierda */
+  .fCopy {
+    order: 2;
+  }
+
+  .fSocial {
+    margin-top: 16px;
+  }
+
+   .unah-footer__inner.bottom {
+    flex-direction: row;          
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+
+
+}
+
 
 /* POR DEFECTO (ESCRITORIO): ocultar botón cerrar y overlay */
 .navClose,
