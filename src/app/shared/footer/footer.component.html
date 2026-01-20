@@ -1,56 +1,119 @@
-<!-- ===== FOOTER ===== -->
-<footer class="unah-footer">
+<footer class="footer">
+  <div class="footer__wrapper">
 
-  <!-- Franja superior -->
-  <div class="unah-footer-top">
-    <div class="unah-footer__inner">
+    <!-- Sección principal -->
+    <div class="footer__container">
 
-      <!-- Izquierda -->
-      <div class="fLeft">
-        <h3 class="fTitle">SISTEMA DE REGISTRO</h3>
-        <p>Ciudad Universitaria Tegucigalpa, M.D.C. Honduras</p>
-        <p>
-          consultas_dipp&#64;unah.edu.hn<br>
-          (+504) 2232-5496, (+504) 2232-6862
-        </p>
-      </div>
+      <!-- Header -->
+      <div class="footer__header">
+        <div class="footer__header-left">
+          <h3 class="footer__main-title">
+            SISTEMA DE REGISTRO
+          </h3>
+          <p class="footer__main-subtitle">
+            Universidad Nacional Autónoma de Honduras
+          </p>
+        </div>
 
-      <!-- Derecha -->
-      <div class="fSocial">
-        <a href="https://www.facebook.com/p/Registro-DIPP-UNAH-100064388181333/" aria-label="Facebook">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="#" aria-label="Correo">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Franja inferior -->
-  <div class="unah-footer-bottom">
-    <div class="unah-footer__inner bottom">
-      <div class="fBrand">
-        <a href="https://www.unah.edu.hn/" target="_blank" aria-label="UNAH">
-          <img src="assets/images/logo-unah-blanco.png"
-              class="unah-footer-logo-lg"
-              alt="UNAH">
-        </a>
-      </div>
-
-      <div class="fCopy">
-        © 2026 Universidad Nacional Autónoma de Honduras.
-        <p>
-          <a href="https://degt.unah.edu.hn/" class="link">
-            Dirección Ejecutiva de Gestión de Tecnología - DEGT
+        <div class="footer__header-right">
+          <a
+            href="https://www.unah.edu.hn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer__cta-button"
+          >
+            Visitar UNAH
+            <lucide-icon name="arrow-right" class="footer__cta-icon"></lucide-icon>
           </a>
-        </p>
+        </div>
       </div>
 
+      <!-- Grid -->
+      <div class="footer__cards-grid">
+
+        <!-- Ubicación -->
+        <div class="footer__card">
+          <div class="footer__card-icon-wrapper">
+            <lucide-icon name="map-pin" class="footer__card-icon"></lucide-icon>
+          </div>
+          <h4 class="footer__card-title">Ubicación</h4>
+          <p class="footer__card-text">
+            Ciudad Universitaria<br>
+            Tegucigalpa, M.D.C.<br>
+            Honduras
+          </p>
+        </div>
+
+        <!-- Teléfonos -->
+        <div class="footer__card">
+          <div class="footer__card-icon-wrapper">
+            <lucide-icon name="phone" class="footer__card-icon"></lucide-icon>
+          </div>
+          <h4 class="footer__card-title">Teléfonos</h4>
+          <p class="footer__card-text">
+            (+504) 2232-5496<br>
+            (+504) 2232-6862
+          </p>
+        </div>
+
+        <!-- Correo -->
+        <div class="footer__card">
+          <div class="footer__card-icon-wrapper">
+            <lucide-icon name="mail" class="footer__card-icon"></lucide-icon>
+          </div>
+          <h4 class="footer__card-title">Correo</h4>
+          <a
+            href="mailto:consultas_dipp@unah.edu.hn"
+            class="footer__card-link"
+          >
+            consultas_dipp&#64;unah.edu.hn
+          </a>
+        </div>
+
+        <!-- Redes -->
+        <div class="footer__card">
+          <div class="footer__card-icon-wrapper">
+            <lucide-icon name="facebook" class="footer__card-icon"></lucide-icon>
+          </div>
+          <h4 class="footer__card-title">Síguenos</h4>
+
+          <div class="footer__social">
+            <a
+              href="https://www.facebook.com/p/Registro-DIPP-UNAH-100064388181333/"
+              class="footer__social-link"
+              aria-label="Facebook"
+            >
+              <lucide-icon name="facebook" class="footer__social-icon"></lucide-icon>
+            </a>
+
+            <a
+              href="mailto:consultas_dipp@unah.edu.hn"
+              class="footer__social-link"
+              aria-label="Email"
+            >
+              <lucide-icon name="mail" class="footer__social-icon"></lucide-icon>
+            </a>
+          </div>
+        </div>
+
+      </div>
     </div>
+
+    <!-- Copyright -->
+    <div class="footer__copyright">
+      <div class="footer__copyright-container">
+        <p>© 2026 Universidad Nacional Autónoma de Honduras</p>
+
+        <a
+          href="https://degt.unah.edu.hn/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer__copyright-link"
+        >
+          Dirección Ejecutiva de Gestión de Tecnología - DEGT
+        </a>
+      </div>
+    </div>
+
   </div>
-
 </footer>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">

@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { FormsModule }  from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AfterViewInit } from '@angular/core';
+import { LucideModule } from './lucide.module';
+import { LucideAngularModule, ArrowRight, MapPin, Phone, Mail, Facebook } from 'lucide-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,7 +30,8 @@ import { MenuPregradoComponent } from './component/menu-pregrado/menu-pregrado.c
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    CommonModule
+    CommonModule, 
+    LucideAngularModule.pick({ ArrowRight, MapPin, Phone, Mail, Facebook })
   ],
   providers: [
     provideClientHydration()

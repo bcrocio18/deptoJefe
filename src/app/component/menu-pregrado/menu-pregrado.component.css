@@ -1,3 +1,31 @@
+:host{
+  display:block;
+}
+
+.unah-layout{
+  width:100%;
+  min-height:100vh;
+  background:#f6f8fb;
+  font-family:"Segoe UI", Arial, system-ui;
+}
+
+.unah-main {
+  flex: 15;
+}
+
+/* =============== RESET LOCAL ============== */
+:host{
+  display:block;
+}
+.unah-layout{
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", Arial, system-ui;
+}
+
 /* ===== BASE ===== */
 .unah-layout{
   --unah-blue: #0b4a7a;
