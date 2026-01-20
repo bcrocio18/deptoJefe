@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-type NavbarKey = 'matricula' | 'laboratorios';
 type MainKey =
   | 'planificacion'
   | 'calificaciones'
@@ -8,11 +7,11 @@ type MainKey =
   | 'labs-anterior';
 
 @Component({
-  selector: 'app-jefe-depto',
-  templateUrl: './jefe-depto.component.html',
-  styleUrls: ['./jefe-depto.component.css']
+  selector: 'app-menu-laboratorios',
+  templateUrl: './menu-laboratorios.component.html',
+  styleUrls: ['./menu-laboratorios.component.css']
 })
-export class JefeDeptoComponent {
+export class MenuLaboratoriosComponent {
 
   /* ===== NAVBAR (NO SE TOCA) ===== */
   openDrop: string | null = null;
@@ -44,3 +43,4 @@ export class JefeDeptoComponent {
     return this.openMain === key;
   }
 }
+

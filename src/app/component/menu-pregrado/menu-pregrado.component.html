@@ -1,0 +1,45 @@
+<section class="block">
+        <div class="block__title">Menú de Opciones de Matrícula Pregrado</div>
+
+        <div class="menuGrid">
+          <details class="menuDetails" [open]="isMainOpen('planificacion')">
+            <summary class="menuItem" (click)="toggleMain('planificacion')">
+              <span class="dot"></span> Planificación Académica <span class="caret2" [class.rotate]="isMainOpen('planificacion')">▾</span>
+            </summary>
+            <div class="menuSub" *ngIf="isMainOpen('planificacion')">
+              <a href="#">Planeación académica</a>
+              <a href="#">Control de cupos</a>
+              <a href="#">Aulas asignadas</a>
+              <a href="#">Estado de matrícula</a>
+              <a href="#">Coordinadores asignatura</a>
+              <a href="#">Reprobación masiva</a>
+            </div>
+          </details>
+          <a class="menuItem" href="#"><span class="dot"></span> Inscripción y Cancelación</a>
+          <a class="menuItem" href="#"><span class="dot"></span> Información de Estudiante</a>
+
+          <details class="menuDetails" [open]="isMainOpen('calificaciones')">
+            <summary class="menuItem" (click)="toggleMain('calificaciones')">
+              <span class="dot"></span> Registro de Calificaciones <span class="caret2">▾</span>
+            </summary>
+            <div class="menuSub" *ngIf="isMainOpen('calificaciones')">
+              <a href="#">Reiniciar clave de profesor</a>
+              <a href="#">Ver estudiantes matriculados</a>
+              <a href="#">Ver calificaciones ingresadas</a>
+              <a href="#">Evaluación Docente</a>
+            </div>
+          </details>
+
+          <details class="menuDetails" [open]="isMainOpen('anterior')">
+            <summary class="menuItem" (click)="toggleMain('anterior')">
+              <span class="dot"></span>Planificación Anterior<span class="caret2">▾</span>
+            </summary>
+            <div class="menuSub" *ngIf="isMainOpen('anterior')">
+              <a href="#">Ver planificación</a>
+              <a href="#">Editar planificación</a>
+            </div>
+          </details>
+          
+          <a class="menuItem danger" href="#"><span class="dot"></span> Baja Matrícula</a>
+        </div>
+      </section>

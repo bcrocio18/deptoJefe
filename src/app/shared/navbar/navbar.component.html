@@ -1,0 +1,80 @@
+  <header class="unah-header">
+    <div class="unah-header__inner">
+
+      <div class="unah-header__center">
+        <div class="unah-header__mini">UNAH ▾</div>
+        <div class="unah-header__title">SISTEMA DE REGISTRO</div>
+        <div class="unah-header__subtitle">Jefes de Departamento · DIPP</div>
+      </div>
+
+      <div class="unah-header__right">
+        <img class="unah-logo unah-logo--white" src="assets/images/logo-unah-blanco.png" alt="UNAH" />
+      </div>
+
+    </div>
+  </header>
+
+  <!-- NAVBAR (PC normal, móvil hamburguesa) -->
+  <nav class="unah-nav" aria-label="Navegación principal">
+    <div class="unah-nav__inner">
+
+      <input class="navToggle" type="checkbox" id="navToggle">
+      <label class="navBurger" for="navToggle">☰ Menú</label>
+      <label class="navOverlay" for="navToggle" aria-hidden="true"></label>
+
+      <div class="unah-nav__links">
+      <!-- Botón cerrar (aparece solo cuando está abierto) -->
+      <label class="navClose" for="navToggle">✕ Cerrar</label>
+
+        <a class="unah-nav__link" href="#">Inicio</a>
+
+        <details #ddPre class="unah-nav__dd nav-acc">
+        <summary class="unah-nav__link" (click)="openOnly(ddPre, $event)">
+          Sistema de pregrado <span class="caret">▾</span>
+        </summary>
+        <div class="unah-nav__menu">
+          <a href="#">Estudiantes</a>
+          <a href="#">Profesores</a>
+          <a href="#" class="is-current">Jefes de departamento</a>
+          <a href="#">Coordinadores de carrera</a>
+        </div>
+      </details>
+
+      <details #ddPost class="unah-nav__dd nav-acc">
+        <summary class="unah-nav__link" (click)="openOnly(ddPost, $event)">
+          Sistema de postgrado <span class="caret">▾</span>
+        </summary>
+        <div class="unah-nav__menu">
+          <a href="#">Solicitudes de ingreso</a>
+          <a href="#">Oferta académica</a>
+          <a href="#">Servicio al estudiante</a>
+          <a href="#">Coordinación de postgrados</a>
+          <a href="#">Registro de calificaciones</a>
+        </div>
+      </details>
+
+      <details #ddAdmin class="unah-nav__dd nav-acc">
+        <summary class="unah-nav__link" (click)="openOnly(ddAdmin, $event)">
+          Administración <span class="caret">▾</span>
+        </summary>
+        <div class="unah-nav__menu">
+          <a href="#">Dirección académica</a>
+          <a href="#">Comisionado universitario</a>
+          <a href="#">Tesorería</a>
+          <a href="#">Decanos</a>
+          <a href="#">DIPP</a>
+          <a href="#">SEAPI</a>
+        </div>
+      </details>
+
+
+        <a class="unah-nav__link" href="#">Contáctenos</a>
+
+        <div class="unah-nav__spacer"></div>
+
+        <a class="unah-nav__action" href="#">Cambiar clave</a>
+        <a class="unah-nav__action" href="#">Cerrar sesión</a>
+      </div>
+
+    </div>
+  </nav>

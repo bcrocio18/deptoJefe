@@ -1,0 +1,142 @@
+
+/* ===== BASE ===== */
+.unah-layout{
+  --unah-blue: #0b4a7a;
+  --unah-blue-2: #083b63;
+  --unah-blue-3: #062c4a;
+  --unah-gold: #f3b316;
+
+  --bg: #f6f8fb;       /* fondo suave */
+  --surface: #ffffff;
+  --text: #0b1220;
+  --muted: #56657a;
+  --line: #e6ebf2;
+
+  --accent: #1d63b3;
+  --danger: #b91c1c;
+}
+
+/* ===== FOOTER ===== */
+.unah-footer {
+  width: 100%;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #fff;
+}
+
+/* ===== FRANJA SUPERIOR ===== */
+.unah-footer-top {
+  background: #003a6d; 
+}
+
+.unah-footer__inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 10px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Izquierda */
+.fLeft {
+  max-width: 80%;
+}
+
+.fTitle {
+  color: #f2b705;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+.fLeft p {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 4px 0;
+  opacity: 0.95;
+}
+
+/* Redes */
+.fSocial {
+  display: flex;
+  gap: 14px;
+}
+
+.fSocial a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #003a6d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.fSocial a:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+/* ===== FRANJA INFERIOR ===== */
+.unah-footer-bottom {
+  background: #002e57; /* Azul más oscuro */
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.unah-footer__inner.bottom {
+  padding: 16px 20px;
+}
+
+.fBrand a img {
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.fBrand a img:hover {
+  transform: scale(1.05);
+  opacity: 0.85;
+}
+
+.fCopy a:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.fCopy a {
+  color: inherit;        /* mismo color del texto */
+  text-decoration: none; /* sin subrayado */
+  font-weight: normal;
+}
+
+.fCopy a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* Marca */
+.fBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fBrand img {
+  height: 65px;
+}
+
+.fBrand span {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* Copyright */
+.fCopy {
+  font-size: 12px;
+  opacity: 0.9;
+}

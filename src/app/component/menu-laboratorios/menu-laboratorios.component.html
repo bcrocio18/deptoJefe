@@ -1,0 +1,20 @@
+<section class="block">
+        <div class="block__title">Menú de Opciones de Programación de Laboratorios y de Prácticas</div>
+
+        <div class="menuGrid">
+          <a class="menuItem" href="#"><span class="dot"></span> Planificación Académica</a>
+          <a class="menuItem" href="#"><span class="dot"></span> Control de Cupos</a>
+          <a class="menuItem" href="#"><span class="dot"></span> Recaudaciones de Laboratorios</a>
+          <a class="menuItem" href="#"><span class="dot"></span> Matrícula Laboratorios</a>
+          <details class="menuDetails" [open]="isMainOpen('labs-anterior')">
+            <summary class="menuItem" (click)="toggleMain('labs-anterior')">
+              <span class="dot"></span>Planificación Anterior<span class="caret2">▾</span>
+            </summary>
+            <div class="menuSub" *ngIf="isMainOpen('labs-anterior')">
+              <a href="#">Ver planificación</a>
+              <a href="#">Editar planificación</a>
+            </div>
+          </details>  
+        </div>
+      </section>
+

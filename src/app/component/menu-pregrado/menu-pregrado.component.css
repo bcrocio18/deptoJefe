@@ -1,0 +1,181 @@
+/* ===== BASE ===== */
+.unah-layout{
+  --unah-blue: #0b4a7a;
+  --unah-blue-2: #083b63;
+  --unah-blue-3: #062c4a;
+  --unah-gold: #f3b316;
+
+  --bg: #f6f8fb;       /* fondo suave */
+  --surface: #ffffff;
+  --text: #0b1220;
+  --muted: #56657a;
+  --line: #e6ebf2;
+
+  --accent: #1d63b3;
+  --danger: #b91c1c;
+}
+
+
+/* ===== Blocks ===== */
+.block{ margin-top: 16px; }
+.block__title{
+  background: var(--unah-blue-2);
+  color: #fff;
+  font-weight: 900;
+  font-size: 13px;
+  padding: 10px 12px;
+  border-radius: 10px 10px 0 0;
+}
+
+/* ===== Menú (grid cards) ===== */
+.menuGrid{
+  border: 1px solid var(--line);
+  border-top: none;
+  padding: 12px;
+  display: grid;
+    align-items: start;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  background: #fff;
+  border-radius: 0 0 12px 12px;
+}
+
+.menuItem{
+  text-decoration: none;
+  border: 1px solid #e6eef7;
+  padding: 10px 10px;
+  font-size: 13px;
+  font-weight: 750;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #0f172a;
+  background: #fbfdff;
+  border-radius: 12px;
+}
+.menuItem:hover{ border-color: #cfe2ff; background: #f5faff; }
+
+.menuItem .dot{
+  width: 10px; height: 10px; border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(29,99,179,.10);
+}
+
+.menuItem.danger{
+  color: rgba(185,28,28,.95);
+  background: rgba(185,28,28,.04);
+  border-color: rgba(185,28,28,.18);
+}
+.menuItem.danger .dot{
+  background: var(--danger);
+  box-shadow: 0 0 0 4px rgba(185,28,28,.10);
+}
+
+/* details dropdown inside grid */
+.menuDetails{ 
+  border: none; 
+}
+
+.menuDetails summary{ 
+  list-style: none; 
+  cursor: pointer; 
+}
+
+.menuDetails summary::-webkit-details-marker{ 
+  display:none; 
+}
+
+.caret2{
+  margin-left: auto;
+  color: #64748b;
+  font-weight: 900;
+  transition: transform .18s ease;
+}
+
+/* ===== MENU SUB (dropdown dentro de cards) ===== */
+.menuSub{
+  margin-top: 8px;
+  border: 1px solid #e6eef7;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 22px rgba(15,23,42,.06);
+  display: grid;
+}
+
+/* links internos */
+.menuSub a{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 400;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(230,235,242,.9);
+}
+.menuSub a:last-child{ border-bottom: none; }
+
+.menuSub a:hover{
+  background: #f5faff;
+}
+
+/* puntito decorativo por opción */
+.menuSub a::before{
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(29,99,179,.75);
+  box-shadow: 0 0 0 4px rgba(29,99,179,.10);
+}
+
+/* estado abierto del details (resalta el summary) */
+.menuDetails[open] > summary.menuItem{
+  border-color: #cfe2ff;
+  background: #f5faff;
+}
+
+/* caret gira */
+.menuDetails[open] .caret2{ transform: rotate(180deg); }
+
+/* animación simple (sin JS) */
+.menuDetails .menuSub{
+  transform-origin: top;
+  animation: menuDrop .18s ease;
+}
+@keyframes menuDrop{
+  from{ opacity: 0; transform: translateY(-4px) scaleY(.98); }
+  to  { opacity: 1; transform: translateY(0) scaleY(1); }
+}
+
+
+/* POR DEFECTO (ESCRITORIO): ocultar botón cerrar y overlay */
+.navClose,
+.navOverlay{
+  display: none;
+}
+
+/* ===== Acordeón (solo muestra el menú del details abierto) ===== */
+/* Base: que el summary sea full width y el caret quede al final */
+.unah-nav__dd > summary.unah-nav__link{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Por defecto, ocultamos todos los menús internos */
+.unah-nav__dd .unah-nav__menu{
+  display: none;
+}
+
+/* Solo el details que esté [open] muestra su menú */
+.unah-nav__dd[open] .unah-nav__menu{
+  display: block;
+}
+
+/* Acordeón visual: si uno está abierto, “apagá” los otros */
+.unah-nav__links:has(.unah-nav__dd[open]) .unah-nav__dd:not([open]) .unah-nav__menu{
+  display: none;
+}
