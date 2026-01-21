@@ -40,7 +40,7 @@
   content:'';
   display:block;
   height: 4px;
-  background: linear-gradient(90deg, var(--unah-blue), var(--unah-gold));
+  background: linear-gradient(90deg, var(--unah-gold), var(--unah-gold));
 }
  
 .card__header{
