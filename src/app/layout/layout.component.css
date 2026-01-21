@@ -1,81 +1,57 @@
 :host{
-  display:block;
+  display: block;
 }
-
+ 
+/* ===== WRAPPER ===== */
 .unah-layout{
-  width:100%;
-  min-height:100vh;
-  background:#f6f8fb;
-  font-family:"Segoe UI", Arial, system-ui;
-}
-
-.unah-main {
-  flex: 15;
-}
-
-/* ===== BASE ===== */
-.unah-layout{
+  /* Paleta UNAH global */
   --unah-blue: #0b4a7a;
   --unah-blue-2: #083b63;
   --unah-blue-3: #062c4a;
   --unah-gold: #f3b316;
-
-  --bg: #f6f8fb;       /* fondo suave */
+ 
+  --bg: #f6f8fb;
   --surface: #ffffff;
   --text: #0b1220;
   --muted: #56657a;
   --line: #e6ebf2;
-
+ 
   --accent: #1d63b3;
   --danger: #b91c1c;
-}
-
-/* =============== RESET LOCAL ============== */
-:host{
-  display:block;
-}
-.unah-layout{
+ 
   width: 100%;
   min-height: 100vh;
   margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: "Segoe UI", Arial, system-ui;
+ 
+
+  display: flex;
+  flex-direction: column;
 }
-
-
-/* ===== RESPONSIVE ===== */
+ 
+/* ===== MAIN ===== */
+.unah-main{
+  flex: 0.05;              /* ocupa el espacio entre navbar y footer */
+  padding: 18px 0 26px;
+  min-width: 0;         /* evita aplastamientos en flex */
+}
+ 
+/* Contenedor */
+.unah-container{
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 16px;
+  min-width: 0;
+}
+ 
+/* Footer responsive (lo que ya tenías) */
 @media (max-width: 768px) {
-    .unah-footer-top .unah-footer__inner {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .fLeft {
-    max-width: 100%;
-  }
-
-  /* Logo a la derecha */
-  .fBrand {
-    order: 1;  
-    font-size: 11px;                   
-  }
-
-  /* Copy a la izquierda */
-  .fCopy {
-    order: 2;
-  }
-
-  .fSocial {
-    margin-top: 16px;
-  }
-
-   .unah-footer__inner.bottom {
-    flex-direction: row;          
-    justify-content: space-between;
-    align-items: center;
-    text-align: left;
-  }
-
-
+  .unah-footer-top .unah-footer__inner { flex-direction: column; text-align: center; }
+  .fLeft { max-width: 100%; }
+  .fBrand { order: 1; font-size: 11px; }
+  .fCopy { order: 2; }
+  .fSocial { margin-top: 16px; }
+  .unah-footer__inner.bottom { flex-direction: row; justify-content: space-between; align-items: center; text-align: left; }
 }

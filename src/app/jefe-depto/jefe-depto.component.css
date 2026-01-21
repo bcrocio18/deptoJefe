@@ -1,81 +1,26 @@
 :host{
-  display:block;
+  display: block;
 }
-
-.unah-layout{
-  width:100%;
-  min-height:100vh;
-  background:#f6f8fb;
-  font-family:"Segoe UI", Arial, system-ui;
-}
-
-.unah-main {
-  flex: 15;
-}
-
-/* =============== RESET LOCAL ============== */
-:host{
-  display:block;
-}
-.unah-layout{
-  width: 100%;
-  min-height: 100vh;
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: "Segoe UI", Arial, system-ui;
-}
-
-/* ===== BASE ===== */
-.unah-layout{
-  --unah-blue: #0b4a7a;
-  --unah-blue-2: #083b63;
-  --unah-blue-3: #062c4a;
-  --unah-gold: #f3b316;
-
-  --bg: #f6f8fb;       /* fondo suave */
-  --surface: #ffffff;
-  --text: #0b1220;
-  --muted: #56657a;
-  --line: #e6ebf2;
-
-  --accent: #1d63b3;
-  --danger: #b91c1c;
-}
+ 
+/* Título de página */
 .unah-pageTitle{
-  margin-bottom:14px;
+  margin: 6px 0 14px;
 }
-
-.unah-pageTitle h1{
-  font-size:22px;
-  font-weight:900;
-}
-
-.unah-pageTitle p{
-  font-size:13px;
-  color:#56657a;
-}
-
-/* ===== MAIN ===== */
-.unah-main{
-  background: var(--bg);
-  padding: 18px 0 26px;
-}
-.unah-container{
-  max-width: 1320px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
-.unah-pageTitle{ margin: 6px 0 14px; }
+ 
 .unah-pageTitle h1{
   margin: 0;
   font-size: 22px;
   font-weight: 900;
 }
+ 
 .unah-pageTitle p{
   margin: 8px 0 0;
   color: var(--muted);
   font-size: 13px;
   font-weight: 700;
+}
+ 
+.link{
+  color: var(--accent);
+  text-decoration: underline;
 }

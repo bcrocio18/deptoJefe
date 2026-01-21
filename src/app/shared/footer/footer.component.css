@@ -12,7 +12,6 @@
   color: #fff;
 }
  
-/* Patrón de fondo MUY sutil */
 .footer__wrapper::before{
   content: "";
   position: absolute;
@@ -25,11 +24,11 @@
  
 .footer__container{
   position: relative;
-  max-width: 1200px; 
   margin: 0 auto;
-  padding: 32px 18px 22px; /* antes 64px */
+  max-width: min(1200px, calc(100% - 24px));
+  padding: clamp(16px, 2.2vw, 28px) 12px clamp(14px, 2vw, 20px);
 }
- 
+
 /* ===== HEADER ===== */
 .footer__header{
   display: grid;
@@ -56,14 +55,14 @@
 .footer__main-title{
   color: #f2b705;
   font-weight: 800;
-  font-size: 20px; /* antes 30px */
-  letter-spacing: 0.08em;
   margin: 0;
+  font-size: clamp(15px, 1.6vw, 20px);
+  letter-spacing: 0.06em;
 }
  
 .footer__main-subtitle{
   color: rgba(255,255,255,0.82);
-  font-size: 13px; /* antes 18px */
+  font-size: clamp(12px, 1.1vw, 13px);
   margin: 0;
 }
  
@@ -81,12 +80,12 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 16px; /* más pequeño */
+  padding: 8px 12px;
+  font-size: 12px;
   background: #f2b705;
   color: #003a6d;
   border-radius: 9999px;
   font-weight: 700;
-  font-size: 13px;
   text-decoration: none;
   transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
   box-shadow: 0 6px 16px rgba(0,0,0,0.18);
@@ -110,10 +109,10 @@
  
 /* ===== GRID DE TARJETAS ===== */
 .footer__cards-grid{
+  gap: clamp(8px, 1.6vw, 14px);
+  margin-bottom: clamp(8px, 1.6vw, 14px);
   display: grid;
   grid-template-columns: 1fr;
-  gap: 7px;          /* antes 32px */
-  margin-bottom: 8px; /* antes 48px */
 }
  
 @media (min-width: 768px){
@@ -127,11 +126,11 @@
 /* Tarjetas compactas */
 .footer__card{
   background: rgba(255,255,255,0.06);
-  border-radius: 14px;
-  padding: 7px; /* antes 24px */
   border: 1px solid rgba(255,255,255,0.12);
   backdrop-filter: blur(8px);
   transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  padding: clamp(10px, 1.4vw, 14px);
+  border-radius: 14px;
 }
  
 .footer__card:hover{
@@ -141,14 +140,14 @@
 }
  
 .footer__card-icon-wrapper{
-  width: 38px;  /* antes 48px */
-  height: 38px;
   background: rgba(242,183,5,0.18);
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px; /* antes 16px */
+  width: 36px;
+  height: 36px;
+  margin-bottom: 8px;
 }
  
 .footer__card-icon{
@@ -160,7 +159,7 @@
 .footer__card-title{
   color: #fff;
   font-weight: 700;
-  font-size: 14px; /* antes 16px */
+  font-size: 13px;
   margin: 0 0 6px 0;
 }
  
@@ -221,13 +220,13 @@
 .footer__copyright-container{
   max-width: 1200px;
   margin: 0 auto;
-  padding: 12px 18px; /* antes 24px */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  font-size: 12px; /* antes 14px */
+  padding: 10px 12px;
+  font-size: 11.5px;
 }
  
 @media (min-width: 768px){
@@ -249,4 +248,88 @@
  
 .footer__copyright-link:hover{
   color: #f2b705;
+}
+
+/* 4) Cards: menos alto/padding en pantallas pequeñas */
+
+ 
+.footer__card-text,
+.footer__card-link{
+  font-size: 12px;
+  line-height: 1.35;
+}
+ 
+/* 5) Copyright: que no se vea alto */
+.footer__copyright-container{
+  padding: 10px 12px;
+  font-size: 11.5px;
+}
+ 
+/* =========================
+   BREAKPOINTS FINOS
+========================= */
+ 
+/* Teléfonos pequeños: 320–390px */
+@media (max-width: 390px){
+  .footer__header{
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+  }
+ 
+  .footer__cta-button{
+    width: 100%;              /* botón full ancho para que se vea fino */
+    justify-content: center;
+  }
+ 
+  .footer__cards-grid{
+    grid-template-columns: 1fr;
+  }
+ 
+  /* cards en móvil: estilo "fila" para que no se sienta gigante */
+  .footer__card{
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    column-gap: 10px;
+    align-items: start;
+  }
+  .footer__card-icon-wrapper{
+    margin-bottom: 0;
+  }
+  .footer__card-title{
+    margin-top: 2px;
+  }
+}
+ 
+/* Tablets: 391–767px */
+@media (min-width: 391px) and (max-width: 767px){
+  .footer__cards-grid{
+    grid-template-columns: 1fr; /* se ve más limpio (si querés 2, te lo cambio) */
+  }
+  .footer__cta-button{
+    width: auto;
+  }
+}
+ 
+/* Tablets grandes / iPad: 768–1023px */
+@media (min-width: 768px) and (max-width: 1023px){
+  .footer__cards-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+ 
+/* Desktop grande: 1400px+ (evita que se vea “gigante”) */
+@media (min-width: 1400px){
+  .footer__container{
+    max-width: 1100px; /* lo compacta más */
+  }
+}
+ 
+/* Accesibilidad: reduce blur en equipos lentos */
+@media (prefers-reduced-motion: reduce){
+  .footer__card,
+  .footer__cta-button,
+  .footer__social-link{
+    transition: none !important;
+  }
 }
