@@ -1,45 +1,57 @@
-<section class="block">
-        <div class="block__title">Menú de Opciones de Matrícula Pregrado</div>
+<section class="pgMenu" aria-label="Menú de Opciones de Matrícula Pregrado">
 
-        <div class="menuGrid">
-          <details class="menuDetails" [open]="isMainOpen('planificacion')">
-            <summary class="menuItem" (click)="toggleMain('planificacion')">
-              <span class="dot"></span> Planificación Académica <span class="caret2" [class.rotate]="isMainOpen('planificacion')">▾</span>
-            </summary>
-            <div class="menuSub" *ngIf="isMainOpen('planificacion')">
-              <a href="#">Planeación académica</a>
-              <a href="#">Control de cupos</a>
-              <a href="#">Aulas asignadas</a>
-              <a href="#">Estado de matrícula</a>
-              <a href="#">Coordinadores asignatura</a>
-              <a href="#">Reprobación masiva</a>
-            </div>
-          </details>
-          <a class="menuItem" href="#"><span class="dot"></span> Inscripción y Cancelación</a>
-          <a class="menuItem" href="#"><span class="dot"></span> Información de Estudiante</a>
+  <!-- HEADER -->
+       <header class="pgMenu__head">
+      <div class="pgMenu__headRow">
+        <h2 class="pgMenu__title" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen">
+           Menú de Opciones de Matrícula Pregrado
+          <span class="titleCaret" [class.is-open]="menuOpen" aria-hidden="true">▾</span> 
+        </h2>
+        <p class="pgMenu__subtitle"> Elegí una sección y trabajá desde el panel </p>
+      </div>
+    </header>
 
-          <details class="menuDetails" [open]="isMainOpen('calificaciones')">
-            <summary class="menuItem" (click)="toggleMain('calificaciones')">
-              <span class="dot"></span> Registro de Calificaciones <span class="caret2">▾</span>
-            </summary>
-            <div class="menuSub" *ngIf="isMainOpen('calificaciones')">
-              <a href="#">Reiniciar clave de profesor</a>
-              <a href="#">Ver estudiantes matriculados</a>
-              <a href="#">Ver calificaciones ingresadas</a>
-              <a href="#">Evaluación Docente</a>
-            </div>
-          </details>
+  <!-- BODY -->
+  <div class="pgMenu__body" [class.is-collapsed]="!menuOpen">
 
-          <details class="menuDetails" [open]="isMainOpen('anterior')">
-            <summary class="menuItem" (click)="toggleMain('anterior')">
-              <span class="dot"></span>Planificación Anterior<span class="caret2">▾</span>
-            </summary>
-            <div class="menuSub" *ngIf="isMainOpen('anterior')">
-              <a href="#">Ver planificación</a>
-              <a href="#">Editar planificación</a>
-            </div>
-          </details>
-          
-          <a class="menuItem danger" href="#"><span class="dot"></span> Baja Matrícula</a>
-        </div>
-      </section>
+    <!-- LEFT: Secciones -->
+    <aside class="pgMenu__left" aria-label="Secciones">
+      <div class="leftTitle">Secciones</div>
+
+      <button
+        *ngFor="let s of sections"
+        type="button"
+        class="secBtn"
+        [class.is-active]="isActive(s.id)"
+        [class.is-danger]="s.danger"
+        (click)="setActive(s.id)">
+
+        <span class="secBtn__mark" aria-hidden="true"></span>
+
+        <span class="secBtn__txt">
+          <span class="secBtn__title">{{ s.title }}</span>
+          <span class="secBtn__desc">{{ s.desc }}</span>
+        </span>
+
+        <span class="secBtn__arrow" aria-hidden="true">›</span>
+      </button>
+    </aside>
+
+    <!-- RIGHT: Panel -->
+    <main class="pgMenu__right" aria-label="Opciones de la sección seleccionada">
+      <div class="panelList" role="list">
+        <a class="panelItem"
+           role="listitem"
+           *ngFor="let it of activeSection.items"
+           [class.is-danger]="it.danger"
+           [href]="it.href || '#'">
+
+          <span class="panelItem__bullet" aria-hidden="true"></span>
+          <span class="panelItem__label">{{ it.label }}</span>
+          <span class="panelItem__go" aria-hidden="true">Ir →</span>
+        </a>
+      </div>
+    </main>
+
+  </div>
+</section>

@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-import { FormsModule }  from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AfterViewInit } from '@angular/core';
+
 import { LucideModule } from './lucide.module';
-import { LucideAngularModule, ArrowRight, MapPin, Phone, Mail, Facebook } from 'lucide-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,12 +14,13 @@ import { ProfileCardComponent } from './component/profile-card/profile-card.comp
 import { FooterComponent } from './shared/footer/footer.component';
 import { MenuLaboratoriosComponent } from './component/menu-laboratorios/menu-laboratorios.component';
 import { MenuPregradoComponent } from './component/menu-pregrado/menu-pregrado.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     JefeDeptoComponent,
     LayoutComponent,
-    NavbarComponent, 
+    NavbarComponent,
     ProfileCardComponent,
     FooterComponent,
     MenuLaboratoriosComponent,
@@ -30,12 +30,10 @@ import { MenuPregradoComponent } from './component/menu-pregrado/menu-pregrado.c
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    CommonModule, 
-    LucideAngularModule.pick({ ArrowRight, MapPin, Phone, Mail, Facebook })
+    CommonModule,
+    LucideModule,
   ],
-  providers: [
-    provideClientHydration()
-  ],
+  providers: [provideClientHydration()],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

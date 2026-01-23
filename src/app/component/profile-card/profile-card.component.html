@@ -1,80 +1,94 @@
 <section class="card">
-  <div class="card__header">
-    <div class="card__bar">
-      <div class="iconBadge">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-          <circle cx="9" cy="7" r="4"></circle>
-          <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-        </svg>
+  <div class="cardClip">
+
+    <!-- HEADER -->
+    <div class="card__header">
+
+      <!-- IZQUIERDA: icono + titulo con toggle -->
+      <div class="card__bar">
+        <div class="iconBadge" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+
+        <button
+          type="button"
+          class="titleToggle"
+          (click)="toggleProfile()"
+          [attr.aria-expanded]="profileOpen"
+          title="Mostrar/ocultar datos"
+        >
+          <span class="card__title">{{ title }}</span>
+          <span class="caret" [class.rotate]="profileOpen">▾</span>
+        </button>
       </div>
-      <span class="card__title">Datos del Jefe de Departamento</span>
+
+      <!-- DERECHA: acciones pequeñas -->
+      <div class="headerActions">
+
+        <!-- Censo -->
+        <button class="actionMini ghost" type="button" (click)="onViewCenso()">
+          <span class="miniText">Ver censo académico</span>
+        </button>
+
+        <!-- Parciales -->
+        <button class="actionMini ghost" type="button" (click)="onViewCalificaciones()">
+          <span class="miniText">Ver Calificaciones Parciales</span>
+        </button>
+
+        <!-- PDF -->
+        <a class="actionMini" [href]="pdfData.url" target="_blank" rel="noopener">
+          <span class="miniIcon">📄</span>
+          <span class="miniText">{{ pdfData.title }}</span>
+          <span class="miniMeta">{{ pdfData.size }}</span>
+        </a>
+
+      </div>
     </div>
-    
-    <a class="pdfLink" href="#">
-      <span class="pdfIcon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-          <polyline points="14 2 14 8 20 8"></polyline>
-        </svg>
-      </span>
-      <div class="pdfInfo">
-        <span class="pdfText">Instructivo Jefes</span>
-        <span class="pdfSize">2.40 MB</span>
-      </div>
-    </a>
-  </div>
-  
-  <div class="card__body">
-    <div class="profileGrid">
-      
-      <div class="profileLeft">
-        <div class="avatarContainer">
-          <img
-            class="profileAvatar"
-            src="assets/images/perfil.png"
-            alt="Perfil UNAH"
-          />
-          <div class="statusDot"></div>
-        </div>
-      </div>
-      
-      <div class="profileRight">
-        <div class="infoCard">
-          <div class="kv">
-            <div class="k">
-              No. Empleado:
+
+    <!-- BODY -->
+    <div class="card__body" [class.isHidden]="!profileOpen">
+
+      <!-- CONTENIDO DEL PERFIL (se colapsa) -->
+      <div class="profileWrap" [class.isOpen]="profileOpen">
+        <div class="profileInner">
+          <div class="profileGrid">
+
+            <div class="profileLeft">
+              <div class="avatarContainer">
+                <img class="profileAvatar" [src]="employeeData.imageUrl" alt="Perfil UNAH" />
+                <div class="statusDot"></div>
+              </div>
             </div>
-            <div class="v">12345</div>
-          </div>
-          
-          <div class="kv">
-            <div class="k">
-              Nombre:
+
+            <div class="profileRight">
+              <div class="infoCard">
+                <div class="kv">
+                  <div class="k">No. Empleado:</div>
+                  <div class="v">{{ employeeData.number }}</div>
+                </div>
+
+                <div class="kv">
+                  <div class="k">Nombre:</div>
+                  <div class="v">{{ employeeData.name }}</div>
+                </div>
+
+                <div class="kv">
+                  <div class="k">Centro:</div>
+                  <div class="v">{{ employeeData.center }}</div>
+                </div>
+              </div>
             </div>
-            <div class="v">HELLEN ROCIO PINEL BACA</div>
-          </div>
-          
-          <div class="kv">
-            <div class="k">
-              Centro:
-            </div>
-            <div class="v">CIUDAD UNIVERSITARIA</div>
+
           </div>
         </div>
-        
-        <div class="btnRow">
-          <button class="btn btn-primary" type="button">
-            Ver censo académico
-          </button>
-          
-          <button class="btn btn-secondary" type="button">
-            Ver Calificaciones Parciales
-          </button>
-        </div>
       </div>
-      
     </div>
   </div>
 </section>

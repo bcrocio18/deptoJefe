@@ -266,70 +266,86 @@
 }
  
 /* =========================
-   BREAKPOINTS FINOS
+   MOBILE FIRST – FOOTER LIMPIO
 ========================= */
- 
-/* Teléfonos pequeños: 320–390px */
-@media (max-width: 390px){
+
+@media (max-width: 767px){
+
+  /* Header más compacto */
   .footer__header{
-    gap: 10px;
-    margin-bottom: 14px;
-    padding-bottom: 12px;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    text-align: left;
   }
- 
+
+  /* Botón UNAH a ancho completo */
   .footer__cta-button{
-    width: 100%;              /* botón full ancho para que se vea fino */
+    width: 100%;
     justify-content: center;
+    padding: 10px 14px;
   }
- 
+
+  /* Cards → estilo LISTA */
   .footer__cards-grid{
     grid-template-columns: 1fr;
+    gap: 8px;
   }
- 
-  /* cards en móvil: estilo "fila" para que no se sienta gigante */
+
   .footer__card{
-    display: grid;
-    grid-template-columns: 44px 1fr;
-    column-gap: 10px;
-    align-items: start;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 12px;
   }
+
   .footer__card-icon-wrapper{
-    margin-bottom: 0;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
   }
+
   .footer__card-title{
-    margin-top: 2px;
+    font-size: 13px;
+    margin-bottom: 4px;
   }
-}
- 
-/* Tablets: 391–767px */
-@media (min-width: 391px) and (max-width: 767px){
-  .footer__cards-grid{
-    grid-template-columns: 1fr; /* se ve más limpio (si querés 2, te lo cambio) */
+
+  .footer__card-text,
+  .footer__card-link{
+    font-size: 12px;
+    line-height: 1.4;
   }
-  .footer__cta-button{
-    width: auto;
+
+  /* Redes sociales más limpias */
+  .footer__social{
+    gap: 8px;
+    margin-top: 4px;
   }
-}
- 
-/* Tablets grandes / iPad: 768–1023px */
-@media (min-width: 768px) and (max-width: 1023px){
-  .footer__cards-grid{
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
- 
-/* Desktop grande: 1400px+ (evita que se vea “gigante”) */
-@media (min-width: 1400px){
-  .footer__container{
-    max-width: 1100px; /* lo compacta más */
-  }
-}
- 
-/* Accesibilidad: reduce blur en equipos lentos */
-@media (prefers-reduced-motion: reduce){
-  .footer__card,
-  .footer__cta-button,
+
   .footer__social-link{
-    transition: none !important;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+  }
+
+  .footer__social-icon{
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Copyright SIN espacio exagerado */
+  .footer__copyright-container{
+    padding: 8px 12px;
+    font-size: 11px;
+    text-align: center;
   }
 }
+
+@media (max-width: 767px){
+  .footer__card--social{
+    align-items: center;
+  }
+}
+
+

@@ -1,10 +1,24 @@
 import { Component } from '@angular/core';
 
-type MainKey =
+type SectionId =
   | 'planificacion'
-  | 'calificaciones'
+  | 'cupos'
+  | 'laboratorios'
   | 'anterior'
   | 'labs-anterior';
+
+  type MenuItem = {
+    label: string;
+    href?: string;
+    danger?: boolean; 
+  };
+  
+  type MenuSection = {
+    id: SectionId;
+    title: string;
+    desc?: string;
+    items: MenuItem[];
+  };
 
 @Component({
   selector: 'app-menu-laboratorios',
@@ -13,34 +27,80 @@ type MainKey =
 })
 export class MenuLaboratoriosComponent {
 
-  /* ===== NAVBAR (NO SE TOCA) ===== */
-  openDrop: string | null = null;
-
-  open(key: string){ this.openDrop = key; }
-  close(key: string){ if(this.openDrop === key) this.openDrop = null; }
-  isOpen(key: string){ return this.openDrop === key; }
-
-  openOnly(target: HTMLDetailsElement, ev: MouseEvent) {
-    ev.preventDefault();
-
-    const wasOpen = target.open;
-
-    document
-      .querySelectorAll<HTMLDetailsElement>('details.nav-acc')
-      .forEach(d => d.open = false);
-
-    target.open = !wasOpen;
+    active: SectionId = 'planificacion';
+  
+    sections: MenuSection[] = [
+      {
+        id: 'planificacion',
+        title: 'Planificación Académica',
+        desc: 'Gestión y control del periodo académico.',
+        items: [
+          { label: 'Planeación académica', href: '#' },
+        ]
+      },
+      {
+        id: 'cupos',
+        title: 'Control de Cupos',
+        desc: 'administrar registro de inscripciones.',
+        items: [
+          { label: 'Control de Cupos', href: '#' },
+        ]
+      },  
+      {
+        id: 'laboratorios',
+        title: 'Recaudaciones de Laboratorios',
+        desc: 'Control de la disponibilidad de lboratorios.',
+        items: [
+          { label: 'Recaudaciones de Laboratorios', href: '#' },
+        ]
+      },
+      {
+        id: 'labs-anterior',
+        title: 'Matricula de Laboratorios',
+        desc: 'Cupos en los laboratorios.',
+        items: [
+          { label: 'Matricula de Laboratorios', href: '#' },
+        ]
+      },
+      {
+        id: 'anterior',
+        title: 'Planificación Anterior',
+        desc: 'Consulta y mantenimiento de periodos previos.',
+        items: [
+          { label: 'Ver planificación', href: '#' },
+          { label: 'Editar planificación', href: '#' },
+        ]
+      },
+      
+    ];
+  
+    setActive(id: SectionId) {
+      this.active = id;
+    }
+  
+    isActive(id: SectionId) {
+      return this.active === id;
+    }
+  
+    menuOpen = false;
+    openSection: string | null = null;
+  
+  
+    toggleMenu() {
+      this.menuOpen = !this.menuOpen;
+    }
+  
+    get activeSection(): MenuSection {
+      return this.sections.find(s => s.id === this.active) ?? this.sections[0];
+    }
+  
+    toggleSection(id: string) {
+      this.openSection = this.openSection === id ? null : id;
+    }
+  
+    isSectionOpen(id: string) {
+      return this.openSection === id;
+    }
   }
-
-  /* ===== MAIN (ACORDEÓN LIMPIO) ===== */
-  openMain: MainKey | null = null;
-
-  toggleMain(key: MainKey) {
-    this.openMain = this.openMain === key ? null : key;
-  }
-
-  isMainOpen(key: MainKey): boolean {
-    return this.openMain === key;
-  }
-}
+  
 

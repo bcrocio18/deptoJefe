@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LucideAngularModule, ArrowRight, MapPin, Phone, Mail, Facebook } from 'lucide-angular';
+import {
+  LucideAngularModule,
+  User, ChevronDown, Key, LogOut,
+  Users, BookOpen, Settings, Sparkles,
+  ArrowRight, MapPin, Phone, Mail, Facebook
+} from 'lucide-angular';
 
 @NgModule({
   imports: [
-    CommonModule,
-    LucideAngularModule.pick({ ArrowRight, MapPin, Phone, Mail, Facebook })
+    LucideAngularModule.pick({
+      User, ChevronDown, Key, LogOut,
+      Users, BookOpen, Settings, Sparkles,
+      ArrowRight, MapPin, Phone, Mail, Facebook
+    })
   ],
-  exports: [
-    LucideAngularModule
-  ]
+  exports: [LucideAngularModule]
 })
-export class LucideModule { }
+export class LucideModule {}

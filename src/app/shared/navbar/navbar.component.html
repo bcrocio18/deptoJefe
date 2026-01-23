@@ -1,120 +1,196 @@
-<div class="unah-container">
-  <!-- HEADER SUPERIOR (BLANCO, LIMPIO) -->
-   <header class="unah-banner">
-      <div class="unah-banner__inner">
-    
-        <div class="unah-banner__brand">
-          <img
-            src="assets/images/logo-unah-blanco.png"
-            alt="UNAH"
-            class="unah-banner__logo"
-          />
-    
-          <div class="unah-banner__text">
-            <h1 class="unah-banner__title">
-              Sistema de Registro Académico
-            </h1>
-            <p class="unah-banner__subtitle">
-              Jefes de Departamento · DIPP
-            </p>
-          </div>
-        </div>
-    
-      </div>
-    </header>
- 
-  <!-- NAV (AZUL) -->
-  <nav class="unah-navigation" [class.mobile-open]="isMobileMenuOpen" aria-label="Navegación principal">
-    <div class="unah-navigation__container">
- 
-      <!-- Botón hamburguesa móvil -->
-      <button
-        type="button"
-        class="unah-navigation__hamburger"
-        (click)="toggleMobileMenu()"
-        aria-label="Menú">
-        <span class="unah-hamburger__line"></span>
-        <span class="unah-hamburger__line"></span>
-        <span class="unah-hamburger__line"></span>
-      </button>
- 
-      <!-- Menú -->
-      <div class="unah-navigation__menu" (click)="$event.stopPropagation()">
-        <a href="#" class="unah-navigation__link unah-navigation__link--active" (click)="closeMobileMenu()">
-          Inicio
-        </a>
- 
-        <!-- Pregrado -->
-        <div class="unah-navigation__dropdown" [class.open]="isDropdownOpen('pregrado')">
-          <button
-            type="button"
-            class="unah-navigation__link"
-            (click)="toggleDropdown('pregrado', $event)">
-            Sistema de Pregrado
-            <span class="unah-navigation__arrow">▼</span>
-          </button>
- 
-          <div class="unah-navigation__submenu" *ngIf="isDropdownOpen('pregrado')">
-            <a href="#" class="unah-navigation__subitem" (click)="closeMobileMenu()">Estudiantes</a>
-            <a href="#" class="unah-navigation__subitem" (click)="closeMobileMenu()">Profesores</a>
-            <a href="#" class="unah-navigation__subitem unah-navigation__subitem--current" (click)="closeMobileMenu()">
-              Jefes de departamento
-            </a>
-            <a href="#" class="unah-navigation__subitem" (click)="closeMobileMenu()">Coordinadores de carrera</a>
-          </div>
-        </div>
- 
-        <!-- Posgrado -->
-        <div class="unah-navigation__dropdown" [class.open]="isDropdownOpen('posgrado')">
-          <button
-            type="button"
-            class="unah-navigation__link"
-            (click)="toggleDropdown('posgrado', $event)">
-            Sistema de Posgrado
-            <span class="unah-navigation__arrow">▼</span>
-          </button>
- 
-          <div class="unah-navigation__submenu" *ngIf="isDropdownOpen('posgrado')">
-            <a href="#" class="unah-navigation__subitem" (click)="closeMobileMenu()">Solicitudes de ingreso</a>
-            <a href="#" class="unah-navigation__subitem" (click)="closeMobileMenu()">Oferta académica</a>
-            <a href="#" class="unah-navigation__subitem" (click)="closeMobileMenu()">Servicio al estudiante</a>
-            <a href="#" class="unah-navigation__subitem" (click)="closeMobileMenu()">Coordinación de postgrados</a>
-            <a href="#" class="unah-navigation__subitem" (click)="closeMobileMenu()">Registro de calificaciones</a>
-          </div>
-        </div>
- 
-        <!-- Admin -->
-        <div class="unah-navigation__dropdown" [class.open]="isDropdownOpen('admin')">
-          <button
-            type="button"
-            class="unah-navigation__link"
-            (click)="toggleDropdown('admin', $event)">
-            Administración
-            <span class="unah-navigation__arrow">▼</span>
-          </button>
- 
-          <div class="unah-navigation__submenu" *ngIf="isDropdownOpen('admin')">
-            <a href="#" class="unah-navigation__subitem" (click)="closeMobileMenu()">Dirección académica</a>
-            <a href="#" class="unah-navigation__subitem" (click)="closeMobileMenu()">Comisionado universitario</a>
-            <a href="#" class="unah-navigation__subitem" (click)="closeMobileMenu()">Tesorería</a>
-            <a href="#" class="unah-navigation__subitem" (click)="closeMobileMenu()">Decanos</a>
-            <a href="#" class="unah-navigation__subitem" (click)="closeMobileMenu()">DIPP</a>
-            <a href="#" class="unah-navigation__subitem" (click)="closeMobileMenu()">SEAPI</a>
-          </div>
-        </div>
- 
-        <a href="#" class="unah-navigation__link" (click)="closeMobileMenu()">Contáctenos</a>
- 
-        <div class="unah-navigation__spacer"></div>
- 
-        <div class="unah-navigation__actions">
-          <a href="#" class="unah-navigation__action" (click)="closeMobileMenu()">Cambiar clave</a>
-          <a href="#" class="unah-navigation__action unah-navigation__action--logout" (click)="closeMobileMenu()">Cerrar sesión</a>
-        </div>
-      </div>
- 
-      <!-- Overlay móvil -->
-      <div class="unah-navigation__overlay" *ngIf="isMobileMenuOpen" (click)="closeMobileMenu()"></div>
+<!-- TOPBAR BLANCO -->
+<header class="topbar topbar--white" (click)="$event.stopPropagation()">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__title">Sistema de Registro</div>
+      <div class="brand__sub">Jefes de Departamento · DIPP</div>
     </div>
-  </nav>
-</div>
+
+    <div class="topbar__right">
+      <!-- PERFIL (acciones aquí) -->
+      <div class="profile">
+        <button
+          type="button"
+          class="profile__btn"
+          (click)="toggleDropdown('profile', $event)"
+          [attr.aria-expanded]="openKey === 'profile'"
+        >
+          <span class="avatar" aria-hidden="true">
+            <lucide-icon name="user" class="avatar__ico"></lucide-icon>
+          </span>
+
+          <span class="profile__txt">
+            <span class="profile__name">Usuario</span>
+            <span class="profile__role">Conectado</span>
+          </span>
+
+          <lucide-icon
+            name="chevron-down"
+            class="profile__caret"
+            [class.is-up]="openKey === 'profile'"
+          ></lucide-icon>
+        </button>
+
+        <!-- MENU PERFIL -->
+        <div class="profile__panel" *ngIf="openKey === 'profile'">
+          <a class="profileItem" href="#" (click)="$event.preventDefault()">
+            <span class="pIco bg-slate">
+              <lucide-icon name="key" class="ico"></lucide-icon>
+            </span>
+            <span class="pTxt">
+              <span class="pTitle">Cambiar clave</span>
+              <span class="pDesc">Seguridad de la cuenta</span>
+            </span>
+          </a>
+
+          <a class="profileItem is-danger" href="#" (click)="$event.preventDefault()">
+            <span class="pIco bg-red">
+              <lucide-icon name="log-out" class="ico"></lucide-icon>
+            </span>
+            <span class="pTxt">
+              <span class="pTitle">Cerrar sesión</span>
+              <span class="pDesc">Salir del sistema</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <!-- HAMBURGUESA (móvil) -->
+      <button class="burger" type="button" (click)="toggleMobile()" aria-label="Abrir menú">
+        <span class="burger__lines" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- NAV AZUL (STICKY) -->
+<nav class="nav nav--blue" aria-label="Navegación principal" (click)="$event.stopPropagation()">
+  <div class="nav__inner">
+    <a class="nav__link is-home" href="#">Inicio</a>
+    <a class="nav__link" href="#">Primer ingreso</a>
+
+    <!-- DROPDOWNS desktop -->
+    <div class="nav__ddWrap">
+      <div class="dd" *ngFor="let d of dropdowns; trackBy: trackByKey">
+        <button
+          class="dd__btn"
+          type="button"
+          (click)="toggleDropdown(d.key, $event)"
+          [attr.aria-expanded]="openKey === d.key"
+        >
+          <span class="dd__lbl">{{ d.label }}</span>
+          <lucide-icon
+            name="chevron-down"
+            class="dd__caret"
+            [class.is-up]="openKey === d.key"
+          ></lucide-icon>
+        </button>
+
+        <div class="dd__panel"
+             *ngIf="openKey === d.key"
+             [ngClass]="d.accentClass">
+          <div class="panelHead">
+            <div class="panelHead__title">{{ d.title }}</div>
+            <div class="panelHead__bar"></div>
+          </div>
+
+          <div class="panelList">
+            <a
+              class="panelItem"
+              *ngFor="let it of d.items"
+              [class.is-active]="it.active"
+              [attr.href]="it.href || '#'"
+              (click)="setActive(d.key, it.label); $event.preventDefault()"
+            >
+              <!-- ICONO -->
+              <span class="badge"
+                    [class.bg-purple]="it.label==='Estudiantes'"
+                    [class.bg-green]="it.label==='Profesores'"
+                    [class.bg-blue]="it.label==='Jefes de departamento'"
+                    [class.bg-amber]="it.label==='Coordinadores'">
+
+                <lucide-icon
+                  class="ico"
+                  [name]="
+                    it.label==='Estudiantes' ? 'users' :
+                    it.label==='Profesores' ? 'book-open' :
+                    it.label==='Jefes de departamento' ? 'settings' :
+                    'sparkles'
+                  "
+                ></lucide-icon>
+              </span>
+
+              <div class="panelItem__txt">
+                <div class="panelItem__label">{{ it.label }}</div>
+                <div class="panelItem__desc">{{ it.desc }}</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav__spacer"></div>
+
+    <a class="nav__link" href="#">Contáctenos</a>
+  </div>
+
+  <!-- MOBILE PANEL -->
+  <div class="mPanel" *ngIf="isMobileOpen">
+    <div class="mPanel__inner">
+      <a class="mLink is-home" href="#">Inicio</a>
+      <a class="mLink" href="#">Primer ingreso</a>
+
+      <div class="mDD" *ngFor="let d of dropdowns; trackBy: trackByKey">
+        <button class="mDD__btn" type="button" (click)="toggleDropdown('m_' + d.key, $event)">
+          <span>{{ d.label }}</span>
+          <lucide-icon
+            name="chevron-down"
+            class="dd__caret"
+            [class.is-up]="openKey === ('m_' + d.key)"
+          ></lucide-icon>
+        </button>
+
+        <div class="mDD__panel" *ngIf="openKey === ('m_' + d.key)" [ngClass]="d.accentClass">
+          <div class="panelHead">
+            <div class="panelHead__title">{{ d.title }}</div>
+            <div class="panelHead__bar"></div>
+          </div>
+
+          <div class="panelList">
+            <a
+              class="panelItem"
+              *ngFor="let it of d.items"
+              [class.is-active]="it.active"
+              [attr.href]="it.href || '#'"
+              (click)="setActive(d.key, it.label); $event.preventDefault()"
+            >
+              <span class="badge"
+                    [class.bg-blue]="it.label==='Estudiantes'"
+                    [class.bg-green]="it.label==='Profesores'"
+                    [class.bg-purple]="it.label==='Jefes de departamento'"
+                    [class.bg-amber]="it.label==='Coordinadores'">
+                <lucide-icon
+                  class="ico"
+                  [name]="
+                    it.label==='Estudiantes' ? 'users' :
+                    it.label==='Profesores' ? 'book-open' :
+                    it.label==='Jefes de departamento' ? 'settings' :
+                    'sparkles'
+                  "
+                ></lucide-icon>
+              </span>
+
+              <div class="panelItem__txt">
+                <div class="panelItem__label">{{ it.label }}</div>
+                <div class="panelItem__desc">{{ it.desc }}</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a class="mLink" href="#">Contáctenos</a>
+    </div>
+  </div>
+</nav>

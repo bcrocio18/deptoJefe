@@ -1,30 +1,42 @@
-import { Component } from '@angular/core';
- 
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+
 @Component({
   selector: 'app-profile-card',
   templateUrl: './profile-card.component.html',
   styleUrls: ['./profile-card.component.css']
 })
 export class ProfileCardComponent {
- 
-  employeeData = {
-    number: '12345',
-    name: 'HELLEN ROCIO PINEL BACA',
-    center: 'CIUDAD UNIVERSITARIA',
-    imageUrl: 'assets/images/perfil.png'
+
+  @Input() title = 'Datos del Jefe de Departamento';
+
+  @Input() employeeData!: {
+    number: string;
+    name: string;
+    center: string;
+    imageUrl: string;
   };
- 
-  pdfData = {
-    title: 'Instructivo Jefes',
-    size: '2.40 MB',
-    url: '#'
+
+  @Input() pdfData!: {
+    title: string;
+    size: string;
+    url: string;
   };
- 
-  onViewCenso() {
-    console.log('Ver censo académico');
+
+  @Output() viewCenso = new EventEmitter<void>();
+  @Output() viewCalificaciones = new EventEmitter<void>();
+
+
+  profileOpen = true; // true = se mira abierto al inicio
+
+  toggleProfile() {
+    this.profileOpen = !this.profileOpen;
   }
- 
+
+  onViewCenso() {
+    this.viewCenso.emit();
+  }
+
   onViewCalificaciones() {
-    console.log('Ver calificaciones parciales');
+    this.viewCalificaciones.emit();
   }
 }

@@ -1,20 +1,57 @@
-<section class="block">
-        <div class="block__title">Menú de Opciones de Programación de Laboratorios y de Prácticas</div>
+<section class="pgMenu" aria-label="Menú de Opciones de Programación de laboratorios y de prácticas">
 
-        <div class="menuGrid">
-          <a class="menuItem" href="#"><span class="dot"></span> Planificación Académica</a>
-          <a class="menuItem" href="#"><span class="dot"></span> Control de Cupos</a>
-          <a class="menuItem" href="#"><span class="dot"></span> Recaudaciones de Laboratorios</a>
-          <a class="menuItem" href="#"><span class="dot"></span> Matrícula Laboratorios</a>
-          <details class="menuDetails" [open]="isMainOpen('labs-anterior')">
-            <summary class="menuItem" (click)="toggleMain('labs-anterior')">
-              <span class="dot"></span>Planificación Anterior<span class="caret2">▾</span>
-            </summary>
-            <div class="menuSub" *ngIf="isMainOpen('labs-anterior')">
-              <a href="#">Ver planificación</a>
-              <a href="#">Editar planificación</a>
-            </div>
-          </details>  
-        </div>
-      </section>
+  <!-- HEADER -->
+    <header class="pgMenu__head">
+      <div class="pgMenu__headRow">
+        <h2 class="pgMenu__title" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen">
+          Menú de Opciones de Laboratorios y de Prácticas 
+          <span class="titleCaret" [class.is-open]="menuOpen" aria-hidden="true">▾</span> 
+        </h2>
+        <p class="pgMenu__subtitle"> Elegí una sección y trabajá desde el panel </p>
+      </div>
+    </header>
 
+
+  <!-- BODY -->
+  <div class="pgMenu__body" [class.is-collapsed]="!menuOpen">
+
+    <!-- LEFT: Secciones -->
+    <aside class="pgMenu__left" aria-label="Secciones">
+      <div class="leftTitle">Secciones</div>
+
+      <button
+        *ngFor="let s of sections"
+        type="button"
+        class="secBtn"
+        [class.is-active]="isActive(s.id)"
+        (click)="setActive(s.id)">
+
+        <span class="secBtn__mark" aria-hidden="true"></span>
+
+        <span class="secBtn__txt">
+          <span class="secBtn__title">{{ s.title }}</span>
+          <span class="secBtn__desc">{{ s.desc }}</span>
+        </span>
+
+        <span class="secBtn__arrow" aria-hidden="true">›</span>
+      </button>
+    </aside>
+
+    <!-- RIGHT: Panel -->
+    <main class="pgMenu__right" aria-label="Opciones de la sección seleccionada">
+      <div class="panelList" role="list">
+        <a class="panelItem"
+           role="listitem"
+           *ngFor="let it of activeSection.items"
+           [class.is-danger]="it.danger"
+           [href]="it.href || '#'">
+
+          <span class="panelItem__bullet" aria-hidden="true"></span>
+          <span class="panelItem__label">{{ it.label }}</span>
+          <span class="panelItem__go" aria-hidden="true">Ir →</span>
+        </a>
+      </div>
+    </main>
+
+  </div>
+</section>
