@@ -2,8 +2,11 @@
 <header class="topbar topbar--white" (click)="$event.stopPropagation()">
   <div class="topbar__inner">
     <div class="brand">
-      <div class="brand__title">Sistema de Registro</div>
-      <div class="brand__sub">Jefes de Departamento · DIPP</div>
+      <img class="logo" src="assets/images/logo-unah.png" alt="Logo UNAH" />
+      <div class="brand__txt">
+        <div class="brand__title">Sistema de Registro</div>
+        <div class="brand__sub">Jefes de Departamento · DIPP</div>
+      </div>
     </div>
 
     <div class="topbar__right">
@@ -20,8 +23,12 @@
           </span>
 
           <span class="profile__txt">
-            <span class="profile__name">Usuario</span>
-            <span class="profile__role">Conectado</span>
+          <span class="profile__name">Usuario</span>
+          <span class="profile__role">
+          <span class="onlineDot" aria-hidden="true"></span>
+          Conectado
+        </span>
+
           </span>
 
           <lucide-icon
@@ -103,21 +110,8 @@
               (click)="setActive(d.key, it.label); $event.preventDefault()"
             >
               <!-- ICONO -->
-              <span class="badge"
-                    [class.bg-purple]="it.label==='Estudiantes'"
-                    [class.bg-green]="it.label==='Profesores'"
-                    [class.bg-blue]="it.label==='Jefes de departamento'"
-                    [class.bg-amber]="it.label==='Coordinadores'">
-
-                <lucide-icon
-                  class="ico"
-                  [name]="
-                    it.label==='Estudiantes' ? 'users' :
-                    it.label==='Profesores' ? 'book-open' :
-                    it.label==='Jefes de departamento' ? 'settings' :
-                    'sparkles'
-                  "
-                ></lucide-icon>
+              <span class="badge" [ngClass]="getBadgeClass(d.key, it.label)">
+                <lucide-icon class="ico" [name]="getIconName(d.key, it.label)"></lucide-icon>
               </span>
 
               <div class="panelItem__txt">
@@ -165,21 +159,11 @@
               [attr.href]="it.href || '#'"
               (click)="setActive(d.key, it.label); $event.preventDefault()"
             >
-              <span class="badge"
-                    [class.bg-blue]="it.label==='Estudiantes'"
-                    [class.bg-green]="it.label==='Profesores'"
-                    [class.bg-purple]="it.label==='Jefes de departamento'"
-                    [class.bg-amber]="it.label==='Coordinadores'">
-                <lucide-icon
-                  class="ico"
-                  [name]="
-                    it.label==='Estudiantes' ? 'users' :
-                    it.label==='Profesores' ? 'book-open' :
-                    it.label==='Jefes de departamento' ? 'settings' :
-                    'sparkles'
-                  "
-                ></lucide-icon>
+              <!-- ICONO -->
+              <span class="badge" [ngClass]="getBadgeClass(d.key, it.label)">
+                <lucide-icon class="ico" [name]="getIconName(d.key, it.label)"></lucide-icon>
               </span>
+
 
               <div class="panelItem__txt">
                 <div class="panelItem__label">{{ it.label }}</div>

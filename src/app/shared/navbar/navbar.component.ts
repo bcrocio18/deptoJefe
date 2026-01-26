@@ -63,6 +63,65 @@ export class NavbarComponent {
     },
   ];
 
+  getIconName(dropKey: string, label: string): string {
+  // PREGRADO
+  if (dropKey === 'pregrado') {
+    return label === 'Estudiantes' ? 'users' :
+           label === 'Profesores' ? 'book-open' :
+           label === 'Jefes de departamento' ? 'settings' :
+           'sparkles';
+  }
+
+  // POSGRADO
+  if (dropKey === 'posgrado') {
+    return label === 'Solicitudes de ingreso' ? 'file-plus' :
+           label === 'Oferta académica' ? 'layers' :
+           label === 'Servicio al estudiante' ? 'life-buoy' :
+           'user-cog'; // Coordinación
+  }
+
+  // ADMIN
+  if (dropKey === 'admin') {
+    return label === 'Dirección académica' ? 'graduation-cap' :
+          label === 'Comisionado' ? 'shield-check' :
+          label === 'Tesorería' ? 'wallet' :
+          'building-2'; // Decanos
+  }
+
+
+  return 'sparkles';
+}
+
+getBadgeClass(dropKey: string, label: string): string {
+  // PREGRADO (mantenemos tus colores)
+  if (dropKey === 'pregrado') {
+    return label === 'Estudiantes' ? 'bg-purple' :
+           label === 'Profesores' ? 'bg-green' :
+           label === 'Jefes de departamento' ? 'bg-blue' :
+           'bg-amber';
+  }
+
+  // POSGRADO (azules/teal/indigo)
+  if (dropKey === 'posgrado') {
+    return label === 'Solicitudes de ingreso' ? 'bg-blue' :
+           label === 'Oferta académica' ? 'bg-indigo' :
+           label === 'Servicio al estudiante' ? 'bg-teal' :
+           'bg-amber';
+  }
+
+  // ADMIN (naranja full)
+  if (dropKey === 'admin') {
+    return label === 'Dirección académica' ? 'bg-navy' :
+          label === 'Comisionado' ? 'bg-slate' :
+          label === 'Tesorería' ? 'bg-gold' :
+          'bg-amber';
+  }
+
+
+  return 'bg-slate';
+}
+
+
   constructor(private host: ElementRef<HTMLElement>) {}
 
   toggleMobile(): void {

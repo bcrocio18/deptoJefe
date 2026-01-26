@@ -1,4 +1,5 @@
 :host{
+  /* ===== Tokens ===== */
   --text:#0f172a;
   --muted:#64748b;
   --line:#e5e7eb;
@@ -6,21 +7,33 @@
 
   --unah-blue:#0b4f86;
   --unah-blue-2:#062f52;
+  --unah-gold:#f2b705;
 
   --pre:#7c3aed;
   --pos:#0ea5e9;
   --admin:#f59e0b;
 
+  /* Layout */
   display:block;
   color:var(--text);
   font-family: "Segoe UI", system-ui, -apple-system, Arial;
 }
 
-/* ========= TOPBAR (BLANCO) ========= */
+/* =========================================================
+   Reset útil
+========================================================= */
+*{ box-sizing:border-box; }
+a{ color: inherit; }
+img{ max-width: 100%; height: auto; }
+
+/* =========================================================
+   TOPBAR (BLANCO)
+========================================================= */
 .topbar{
-  background:#fff;
+  background:#f6f8fb;
   border-bottom:1px solid var(--line);
 }
+
 .topbar__inner{
   max-width: 1200px;
   margin:0 auto;
@@ -30,25 +43,59 @@
   justify-content:space-between;
   gap:12px;
 }
-.brand__title{
-  font-weight: 950;
-  letter-spacing:.2px;
-  font-size: 16px;
-}
-.brand__sub{
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 2px;
+
+/* Brand */
+.brand{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  min-width: 0;
 }
 
+.logo{
+  height: 56px;       /* base (luego se ajusta por breakpoints) */
+  width: auto;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.brand__txt{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+
+.brand__title{
+  font-weight: 950;
+  letter-spacing:.1px;
+  font-size: 22px;    /* base (antes 30 era demasiado) */
+  line-height: 1.05;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brand__sub{
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Right area */
 .topbar__right{
   display:flex;
   align-items:center;
   gap:10px;
 }
 
-/* ========= PERFIL ========= */
+/* =========================================================
+   PERFIL
+========================================================= */
 .profile{ position:relative; }
+
 .profile__btn{
   border: 1px solid rgba(15,23,42,.08);
   background:#fff;
@@ -60,11 +107,13 @@
   border-radius: 14px;
   transition: box-shadow .15s ease, transform .15s ease, background .15s ease;
 }
+
 .profile__btn:hover{
   background:#f8fafc;
   box-shadow: 0 10px 22px rgba(2,6,23,.08);
   transform: translateY(-1px);
 }
+
 .avatar{
   width: 38px;
   height: 38px;
@@ -74,6 +123,7 @@
   place-items:center;
   box-shadow: 0 12px 22px rgba(11,79,134,.22);
 }
+
 .avatar__ico{
   width: 18px;
   height: 18px;
@@ -85,17 +135,25 @@
   flex-direction:column;
   line-height: 1.05;
   text-align:left;
+  min-width: 0;
 }
+
 .profile__name{
   font-weight: 950;
   font-size: 13px;
   color:#0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
 }
+
 .profile__role{
   font-size: 11px;
   color: var(--muted);
   margin-top: 3px;
 }
+
 .profile__caret{
   width: 18px;
   height: 18px;
@@ -105,6 +163,7 @@
 }
 .profile__caret.is-up{ transform: rotate(180deg); }
 
+/* Panel perfil */
 .profile__panel{
   position:absolute;
   right: 0;
@@ -145,14 +204,13 @@
   place-items:center;
   flex: 0 0 38px;
 }
-.bg-slate{ background: linear-gradient(135deg,#334155,#0f172a); }
-.bg-red{ background: linear-gradient(135deg,#ef4444,#ec4899); }
-
 .pTxt{ display:flex; flex-direction:column; }
 .pTitle{ font-weight: 950; font-size: 13px; }
 .pDesc{ font-size: 11px; color: var(--muted); margin-top:3px; }
 
-/* ========= BURGER ========= */
+/* =========================================================
+   BURGER
+========================================================= */
 .burger{
   display:none;
   border:0;
@@ -162,6 +220,7 @@
   cursor:pointer;
   border: 1px solid rgba(15,23,42,.08);
 }
+
 .burger__lines{
   display:block;
   width: 18px;
@@ -173,14 +232,17 @@
   opacity:.85;
 }
 
-/* ========= NAV AZUL (STICKY) ========= */
+/* =========================================================
+   NAV AZUL (STICKY)
+========================================================= */
 .nav{
   background: linear-gradient(135deg, var(--unah-blue) 0%, var(--unah-blue-2) 100%);
   border-bottom: 1px solid rgba(255,255,255,.12);
-  position: sticky;  /* fijo arriba al bajar */
+  position: sticky;
   top: 0;
   z-index: 9999;
 }
+
 .nav__inner{
   max-width: 1200px;
   margin: 0 auto;
@@ -200,7 +262,6 @@
   transition: background .15s ease, transform .15s ease;
 }
 .nav__link:hover{ background: rgba(255,255,255,.10); }
-
 .nav__link.is-home{
   background: rgba(255,255,255,.14);
   box-shadow: 0 10px 20px rgba(2,6,23,.18);
@@ -208,7 +269,7 @@
 
 .nav__spacer{ flex: 1; }
 
-/* ========= DROPDOWNS (desktop) ========= */
+/* Dropdowns desktop */
 .nav__ddWrap{
   display:flex;
   align-items:center;
@@ -300,18 +361,25 @@
   transform: translateY(-1px);
 }
 
+.panelItem__txt{ min-width: 0; }
 .panelItem__label{
   font-weight: 950;
   font-size: 13px;
   color:#0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .panelItem__desc{
   font-size: 11px;
   color: var(--muted);
   margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* ICON BADGE + LUCIDE */
+/* Badge + Lucide */
 .badge{
   width: 40px;
   height: 40px;
@@ -328,80 +396,83 @@
   color: #fff;
 }
 
-/* ===========================
-   FIX: iconos invisibles en POS/ADMIN
-   (porque el badge no tiene bg-* y el icono es blanco)
-=========================== */
+/* ===== Paleta badges ===== */
+.bg-navy{ background: linear-gradient(135deg, #0b4f86, #062f52); }
+.bg-gold{ background: linear-gradient(135deg,  #0ea5e9, #0369a1); }
+.bg-slate{ background: linear-gradient(135deg,#334155,#0f172a); }
+.bg-indigo{ background: linear-gradient(135deg,#4f46e5,#3730a3); }
+.bg-teal{ background: linear-gradient(135deg,#14b8a6,#0f766e); }
+.bg-blue{ background: linear-gradient(135deg,#2563eb,#1d4ed8); }
+.bg-green{ background: linear-gradient(135deg,#22c55e,#16a34a); }
+.bg-purple{ background: linear-gradient(135deg,#7c3aed,#5b21b6); }
+.bg-amber{ background: linear-gradient(135deg, #062f52, #0b4f86); }
+.bg-red{ background: linear-gradient(135deg,#ef4444,#ec4899); }
 
-/* 1) Si el badge NO tiene ninguno de los bg-*, dale un fondo y cambia el color del icono */
-.badge:not(.bg-blue):not(.bg-green):not(.bg-purple):not(.bg-amber){
+/* ===== Fallback neutral (YA BIEN) ===== */
+.badge
+  :not(.bg-blue):not(.bg-green):not(.bg-purple):not(.bg-amber)
+  :not(.bg-indigo):not(.bg-teal)
+  :not(.bg-navy):not(.bg-gold):not(.bg-slate){
   background: rgba(15,23,42,.08);
   border: 1px solid rgba(15,23,42,.10);
   box-shadow: none;
 }
-
-.badge:not(.bg-blue):not(.bg-green):not(.bg-purple):not(.bg-amber) .ico{
-  color: #0f172a; /* oscuro, para que se vea en blanco */
+.badge
+  :not(.bg-blue):not(.bg-green):not(.bg-purple):not(.bg-amber)
+  :not(.bg-indigo):not(.bg-teal)
+  :not(.bg-navy):not(.bg-gold):not(.bg-slate) .ico{
+  color: #0f172a;
 }
 
-/* 2) Si el panel es POSGRADO, que esos badges neutros tengan el color posgrado */
-.dd__panel.accent-pos .badge:not(.bg-blue):not(.bg-green):not(.bg-purple):not(.bg-amber),
-.mDD__panel.accent-pos .badge:not(.bg-blue):not(.bg-green):not(.bg-purple):not(.bg-amber){
-  background: linear-gradient(135deg, var(--pos), #0369a1);
-  border-color: rgba(14,165,233,.30);
-  box-shadow: 0 12px 22px rgba(14,165,233,.18);
-}
+/* Accent bars */
+.dd__panel.accent-pre .panelHead__bar{ background: var(--pre); }
+.dd__panel.accent-pos .panelHead__bar{ background: var(--pos); }
+.dd__panel.accent-admin .panelHead__bar{ background: var(--admin); }
 
-.dd__panel.accent-pos .badge:not(.bg-blue):not(.bg-green):not(.bg-purple):not(.bg-amber) .ico,
-.mDD__panel.accent-pos .badge:not(.bg-blue):not(.bg-green):not(.bg-purple):not(.bg-amber) .ico{
-  color: #fff;
-}
-
-/* 3) Si el panel es ADMIN, que esos badges neutros tengan el color admin */
-.dd__panel.accent-admin .badge:not(.bg-blue):not(.bg-green):not(.bg-purple):not(.bg-amber),
-.mDD__panel.accent-admin .badge:not(.bg-blue):not(.bg-green):not(.bg-purple):not(.bg-amber){
-  background: linear-gradient(135deg, var(--admin), #b45309);
-  border-color: rgba(245,158,11,.30);
-  box-shadow: 0 12px 22px rgba(245,158,11,.18);
-}
-
-.dd__panel.accent-admin .badge:not(.bg-blue):not(.bg-green):not(.bg-purple):not(.bg-amber) .ico,
-.mDD__panel.accent-admin .badge:not(.bg-blue):not(.bg-green):not(.bg-purple):not(.bg-amber) .ico{
-  color: #fff;
-}
-
-
-/* Colores por item */
-.bg-blue{ background: linear-gradient(135deg,#2563eb,#1d4ed8); }
-.bg-green{ background: linear-gradient(135deg,#22c55e,#16a34a); }
-.bg-purple{ background: linear-gradient(135deg,#7c3aed,#5b21b6); }
-.bg-amber{ background: linear-gradient(135deg,#f59e0b,#d97706); }
-
-/* Activo */
+/* Activo base */
 .panelItem.is-active{
-  background: linear-gradient(90deg, rgba(124,58,237,1), rgba(99,102,241,1));
-  box-shadow: 0 14px 28px rgba(124,58,237,.28);
+  box-shadow: 0 14px 28px rgba(2,6,23,.18);
 }
 .panelItem.is-active .panelItem__label{ color:#fff; }
-.panelItem.is-active .panelItem__desc{ color: rgba(255,255,255,.78); }
+.panelItem.is-active .panelItem__desc{ color: rgba(255,255,255,.82); }
 .panelItem.is-active .badge{
   background: rgba(255,255,255,.18);
   box-shadow: none;
 }
 .panelItem.is-active .ico{ color:#fff; }
 
-/* Accent por menú */
-.dd__panel.accent-pre .panelHead__bar{ background: var(--pre); }
-.dd__panel.accent-pos .panelHead__bar{ background: var(--pos); }
-.dd__panel.accent-admin .panelHead__bar{ background: var(--admin); }
+/* Activo por menú */
+.dd__panel.accent-pre .panelItem.is-active,
+.mDD__panel.accent-pre .panelItem.is-active{
+  background: linear-gradient(
+    90deg,
+    #336c9e,
+    #195a8f,
+    #1d63b3
+  );
+}
 
-/* ========= MOBILE ========= */
+
+.dd__panel.accent-pos .panelItem.is-active,
+.mDD__panel.accent-pos .panelItem.is-active{
+  background: linear-gradient(90deg, #0ea5e9, #0369a1);
+}
+
+.dd__panel.accent-admin .panelItem.is-active,
+.mDD__panel.accent-admin .panelItem.is-active{
+  background: linear-gradient(90deg, #062f52, #0b4f86);
+}
+
+/* =========================================================
+   MOBILE PANEL
+========================================================= */
 .mPanel{
   display:none;
   border-top: 1px solid rgba(255,255,255,.12);
   background: rgba(255,255,255,.06);
   backdrop-filter: blur(8px);
 }
+
 .mPanel__inner{
   max-width: 1200px;
   margin: 0 auto;
@@ -419,6 +490,7 @@
   margin-bottom: 8px;
   background: rgba(255,255,255,.10);
 }
+
 .mLink.is-home{
   background: rgba(255,255,255,.16);
   box-shadow: 0 10px 20px rgba(2,6,23,.18);
@@ -448,25 +520,310 @@
   margin-bottom: 12px;
 }
 
-/* Reusa accents en móvil */
-.mDD__panel.accent-pre .panelHead__bar{ background: var(--pre); }
-.mDD__panel.accent-pos .panelHead__bar{ background: var(--pos); }
-.mDD__panel.accent-admin .panelHead__bar{ background: var(--admin); }
+/* =========================================================
+   RESPONSIVE (rangos reales)
+========================================================= */
+/* =========================
+   PERFIL + BURGER compactos (móvil)
+   ========================= */
+@media (max-width: 520px){
+  /* espacio total en la topbar */
+  .topbar__inner{
+    padding: 8px 10px;
+    gap: 8px;
+  }
 
-/* ========= RESPONSIVE ========= */
+  /* Logo + textos más compactos */
+  .logo{ height: 38px; }
+  .brand__title{ font-size: 14px; }
+  .brand__sub{ font-size: 10px; }
+
+  /* PERFIL: botón mínimo */
+  .profile__btn{
+    padding: 6px 8px;
+    border-radius: 12px;
+    gap: 6px;
+  }
+
+  /* Avatar más pequeño */
+  .avatar{
+    width: 32px;
+    height: 32px;
+    border-radius: 12px;
+  }
+  .avatar__ico{
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Flechita (caret) más pequeña */
+  .profile__caret{
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Panel del perfil que no se desborde */
+  .profile__panel{
+    width: min(280px, 92vw);
+    right: 0;
+  }
+
+  /* BURGER más pequeño */
+  .burger{
+    padding: 8px 10px;
+    border-radius: 12px;
+  }
+  .burger__lines{
+    width: 16px;
+    height: 10px;
+    background:
+      linear-gradient(#0f172a,#0f172a) 0 0/100% 2px no-repeat,
+      linear-gradient(#0f172a,#0f172a) 0 4px/100% 2px no-repeat,
+      linear-gradient(#0f172a,#0f172a) 0 8px/100% 2px no-repeat;
+  }
+}
+
+/* Extra mini (iPhone SE) */
+@media (max-width: 360px){
+  .logo{ height: 34px; }
+  .profile__btn{ padding: 5px 7px; }
+  .avatar{ width: 30px; height: 30px; }
+  .burger{ padding: 7px 9px; }
+}
+
+
+/* XS: 0 - 420px (iPhone SE etc) */
+@media (max-width: 420px){
+  .topbar__inner{ padding: 10px 12px; }
+  .logo{ height: 44px; }
+  .brand__title{ font-size: 16px; }
+  .brand__sub{ font-size: 11px; }
+  .profile__name{ max-width: 90px; }
+
+  .dd__panel{ width: 92vw; }
+}
+
+/* SM: 421 - 640px */
+@media (max-width: 640px){
+  .brand__title{ font-size: 18px; }
+  .brand__sub{ font-size: 12px; }
+  .logo{ height: 48px; }
+}
+
+/* MD: <= 980px (tablet y móviles grandes) */
 @media (max-width: 980px){
   .burger{ display:inline-flex; }
+
+  /* ocultar links y dropdowns desktop */
   .nav__ddWrap,
   .nav__link{ display:none; }
+
   .nav__inner{ justify-content: space-between; }
   .mPanel{ display:block; }
 
-  /* Perfil un poquito más compacto */
+  /* Perfil compacto */
   .profile__txt{ display:none; }
+
+  /* Paneles que no se salgan de pantalla */
+  .profile__panel{
+    width: min(320px, 92vw);
+  }
 }
 
-@media (max-width: 420px){
-  .brand__title{ font-size: 14px; }
-  .brand__sub{ font-size: 11px; }
-  .dd__panel{ width: 92vw; }
+/* LG: 981 - 1200px */
+@media (min-width: 981px) and (max-width: 1200px){
+  .topbar__inner,
+  .nav__inner{ padding-left: 16px; padding-right: 16px; }
+  .brand__title{ font-size: 20px; }
+  .logo{ height: 52px; }
 }
+
+/* XL: 1201 - 1440px */
+@media (min-width: 1201px){
+  .brand__title{ font-size: 22px; }
+  .logo{ height: 56px; }
+}
+
+/* 2XL: pantallas grandes (1440+) */
+@media (min-width: 1440px){
+  .topbar__inner,
+  .nav__inner{ max-width: 1280px; }
+}
+
+/* =========================================================
+   Accesibilidad: reducir animaciones si el usuario lo pide
+========================================================= */
+@media (prefers-reduced-motion: reduce){
+  *{ transition: none !important; animation: none !important; }
+}
+
+
+/* =========================================
+   LIFT: TOPBAR con textura + acento UNAH
+========================================= */
+.topbar{
+  background:
+    radial-gradient(circle at 1px 1px, rgba(11,79,134,.07) 1px, transparent 0) 0 0/26px 26px,
+    linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
+  border-bottom: 1px solid rgba(2,6,23,.08);
+  position: relative;
+  overflow: hidden;
+}
+
+/* línea dorada (branding) */
+.topbar::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--unah-gold), transparent);
+  opacity: .95;
+}
+
+/* “shine” suave */
+.topbar::before{
+  content:"";
+  position:absolute;
+  top:-60%;
+  left:-30%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(120deg, transparent, rgba(242,183,5,.14), transparent);
+  transform: rotate(12deg);
+  opacity: .0;
+  transition: opacity .25s ease;
+  pointer-events:none;
+}
+.topbar:hover::before{ opacity: 1; }
+
+/* Logo con presencia */
+.logo{
+  filter: drop-shadow(0 10px 18px rgba(2,6,23,.10));
+}
+
+/* Título: más pro y con acento */
+.brand__title{
+  font-weight: 980;
+  letter-spacing: .2px;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+/* subrayado moderno */
+.brand__title::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-2px;
+  width: 46px;
+  height: 4px;
+  border-radius: 999px;
+  opacity: .9;
+}
+
+.brand__sub{
+  color: rgba(15,23,42,.62);
+}
+
+/* =========================================
+   LIFT: NAV azul con detalle (sin cargarlo)
+========================================= */
+.nav{
+  box-shadow: 0 14px 30px rgba(2,6,23,.14);
+}
+
+/* links: subrayado animado al hover */
+.nav__link,
+.dd__btn{
+  position: relative;
+}
+
+.nav__link::after,
+.dd__btn::after{
+  content:"";
+  position:absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 6px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(242,183,5,.95), transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .18s ease;
+  opacity: .9;
+}
+
+.nav__link:hover::after,
+.dd__btn:hover::after{
+  transform: scaleX(1);
+}
+
+/* Inicio (home) más “botón real” */
+.nav__link.is-home{
+  border: 1px solid rgba(255,255,255,.16);
+  backdrop-filter: blur(6px);
+}
+
+/* Panel items: hover más elegante */
+.panelItem:hover{
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+/* =========================================
+   MICRO: feel de botón (perfil) más vivo
+========================================= */
+.profile__btn{
+  border: 1px solid rgba(11,79,134,.10);
+}
+
+.profile__btn:active{
+  transform: translateY(0px) scale(.99);
+}
+
+/* Avatar: borde brillante */
+.avatar{
+  position: relative;
+}
+.avatar::after{
+  content:"";
+  position:absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(242,183,5,.65), rgba(255,255,255,.0));
+  opacity: .35;
+  pointer-events:none;
+}
+
+
+.onlineDot{
+  display:inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #22c55e;
+  margin-right: 6px;
+  box-shadow: 0 0 0 0 rgba(34,197,94,.35);
+  animation: pulseDot 1.8s ease-out infinite;
+  vertical-align: middle;
+}
+@keyframes pulseDot{
+  0%{ box-shadow: 0 0 0 0 rgba(34,197,94,.35); }
+  70%{ box-shadow: 0 0 0 10px rgba(34,197,94,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+}
+
+.nav{
+  position: sticky;
+}
+.nav::before{
+  content:"";
+  position:absolute;
+  left:0; right:0; top:0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(242,183,5,.95), transparent);
+  opacity: .8;
+}
+
+.topbar{ overflow: visible; }
+

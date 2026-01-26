@@ -1,6 +1,7 @@
 :host{
   display:block;
 
+  /* ===== PALETA ===== */
   --unah-blue:#0b4a7a;
   --unah-blue-2:#083b63;
   --accent:#1d63b3;
@@ -13,79 +14,90 @@
   --line:#e6ebf2;
 
   --r:16px;
+
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--text);
 }
 
-/* ===== CONTENEDOR ===== */
-.pgMenu{ margin-top: 12px; }
+/* =========================================================
+   LAYOUT BASE
+========================================================= */
+.pgMenu{
+  width: 100%;
+  margin-top: 12px;
+}
 
-/* ===== HEADER ===== */
+/* =========================================================
+   HEADER (BARRA AZUL)
+========================================================= */
 .pgMenu__head{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:12px;
-  padding:14px;
+
+  padding: 14px;
   border-radius: var(--r);
   background: linear-gradient(135deg, var(--unah-blue-2), var(--unah-blue));
   color:#fff;
   box-shadow: 0 14px 30px rgba(2,16,36,.12);
 }
 
-.pgMenu__head {
-  padding: 16px 20px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.pgMenu__headRow {
-  display: flex;
+.pgMenu__headRow{
+  display:flex;
   flex-direction: column;
   gap: 6px;
+  min-width: 0;
 }
 
-.pgMenu__title {
+.pgMenu__title{
   margin: 0;
   display: inline-flex;
   align-items: center;
   gap: 8px;
 
   font-size: 1rem;
-  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-  font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: 0.2px;
-  color: var(--surface);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: .2px;
+
+  color: #fff;
   cursor: pointer;
   user-select: none;
+  min-width: 0;
+  flex-wrap: wrap;
 }
 
-.titleCaret {
-  font-size: 0.9rem;
-  color: var(--surface);
-  transition: transform 0.25s ease;
+.titleCaret{
+  font-size: .95rem;
+  color: #fff;
+  transition: transform .25s ease;
+  flex: 0 0 auto;
 }
 
-.titleCaret.is-open {
+.titleCaret.is-open{
   transform: rotate(180deg);
-  color: var(--surface);
 }
 
-
-.pgMenu__subtitle {
-  margin: 0; 
-  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-  font-size: 0.85rem;
-  color: var(--surface);
+.pgMenu__subtitle{
+  margin: 0;
+  font-size: .85rem;
+  line-height: 1.35;
+  color: rgba(255,255,255,.85);
 }
 
-/* ===== BODY (LEFT + RIGHT) ===== */
+/* =========================================================
+   BODY (CONTENEDOR: LEFT + RIGHT)
+========================================================= */
 .pgMenu__body{
   margin-top: 12px;
+
   display:grid;
-  grid-template-columns: 360px 1fr;
+  grid-template-columns: 1fr;
   gap: 12px;
   align-items:start;
 
-  /* colapso */
+  /* colapso con animación */
   overflow:hidden;
   max-height: 2000px;
   opacity: 1;
@@ -100,12 +112,15 @@
   pointer-events:none;
 }
 
-/* ===== LEFT ===== */
+/* =========================================================
+   LEFT (SECCIONES)
+========================================================= */
 .pgMenu__left{
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r);
   padding: 10px;
+  min-width: 0;
 }
 
 .leftTitle{
@@ -115,18 +130,19 @@
   padding: 4px 6px 10px;
 }
 
-/* Botón sección */
 .secBtn{
   width:100%;
   display:flex;
   align-items:center;
   gap:10px;
-  padding:12px;
+
+  padding: 12px;
   border-radius: 14px;
   border: 1px solid transparent;
   background: transparent;
   cursor:pointer;
   text-align:left;
+
   color: var(--text);
   transition: background .12s ease, border-color .12s ease, transform .12s ease;
 }
@@ -142,7 +158,7 @@
   border-radius:999px;
   background: rgba(29,99,179,.45);
   box-shadow: 0 0 0 5px rgba(29,99,179,.10);
-  flex:0 0 auto;
+  flex: 0 0 auto;
 }
 
 .secBtn__txt{
@@ -183,7 +199,7 @@
 }
 .secBtn.is-active .secBtn__arrow{ opacity:.9; }
 
-/* Danger section */
+/* Danger */
 .secBtn.is-danger{
   background: rgba(185,28,28,.06);
   border-color: rgba(185,28,28,.18);
@@ -196,58 +212,17 @@
   color: rgba(185,28,28,.95);
 }
 
-/* ===== RIGHT ===== */
+/* =========================================================
+   RIGHT (PANEL)
+========================================================= */
 .pgMenu__right{
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r);
   overflow:hidden;
+  min-width: 0;
 }
 
-/* Panel top */
-.panelTop{
-  padding: 14px;
-  border-bottom: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(29,99,179,.06), rgba(255,255,255,0));
-}
-
-.panelTop.is-danger{
-  background: linear-gradient(180deg, rgba(185,28,28,.06), rgba(255,255,255,0));
-}
-
-.panelTop__badge{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 900;
-  color: rgba(8,59,99,.95);
-  background: rgba(243,179,22,.18);
-  border: 1px solid rgba(243,179,22,.35);
-}
-
-.panelTop__badge.is-danger{
-  color: rgba(185,28,28,.95);
-  background: rgba(185,28,28,.12);
-  border-color: rgba(185,28,28,.25);
-}
-
-.panelTop__title{
-  margin: 10px 0 0;
-  font-size: 14px;
-  font-weight: 900;
-  color: var(--text);
-}
-
-.panelTop__desc{
-  margin: 6px 0 0;
-  font-size: 12px;
-  color: var(--muted);
-}
-
-/* Panel list */
 .panelList{
   padding: 12px;
   display: grid;
@@ -259,9 +234,11 @@
   align-items:center;
   gap:10px;
   padding: 12px;
+
   border-radius: 14px;
   border: 1px solid rgba(230,235,242,.95);
   background: #fbfdff;
+
   text-decoration:none;
   color: var(--text);
   transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
@@ -278,17 +255,20 @@
   border-radius:999px;
   background: rgba(29,99,179,.75);
   box-shadow: 0 0 0 5px rgba(29,99,179,.10);
+  flex: 0 0 auto;
 }
 
 .panelItem__label{
   font-size: 13px;
   font-weight: 800;
+  min-width: 0;
 }
 
 .panelItem__go{
   margin-left:auto;
   font-weight: 900;
   opacity: .55;
+  flex: 0 0 auto;
 }
 
 /* Danger item */
@@ -304,63 +284,84 @@
   color: rgba(185,28,28,.95);
 }
 
-/* ===== RESPONSIVE ===== */
-
-/* Tablet: apila, pero se mantiene pro */
-@media (max-width: 980px){
-  .pgMenu__body{
-    grid-template-columns: 1fr; /* se apila */
-  }
-
-  /* Left como lista compacta arriba */
-  .pgMenu__left{
-    padding: 10px;
-  }
-
-  .secBtn__desc{
-    display:none; /* más limpio en tablet/móvil */
-  }
-}
-
-/* Móvil: el left se vuelve "chips" con scroll horizontal para que no sea enorme */
+/* =========================================================
+   RESPONSIVE: TELEFONOS (chips horizontales para LEFT)
+========================================================= */
+/* phones / fold / SE */
 @media (max-width: 620px){
-  .pgMenu__left{
-    overflow-x: auto;
-    padding: 10px;
-  }
+  /* header más compacto */
+  .pgMenu__head{ padding: 12px; }
+  .pgMenu__title{ font-size: .95rem; }
+  .pgMenu__subtitle{ font-size: .82rem; }
 
-  /* convierte los botones en “píldoras” horizontales */
+  /* LEFT -> carrusel horizontal */
   .pgMenu__left{
-    display: flex;
+    display:flex;
     gap: 10px;
     align-items: stretch;
     flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .leftTitle{
-    display:none;
-  }
+  .leftTitle{ display:none; }
 
   .secBtn{
     min-width: 240px;
     flex: 0 0 auto;
     border: 1px solid var(--line);
     background: #fff;
+    scroll-snap-align: start;
   }
 
   .secBtn__arrow{ display:none; }
+  .secBtn__desc{ display:none; } /* limpio en móvil */
+
+  /* RIGHT más compacto */
+  .panelList{ padding: 10px; }
+  .panelItem{ padding: 11px; }
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 1050px){
-  .pgMenu__body{ grid-template-columns: 1fr; }
+/* iPhone SE / muy pequeño */
+@media (max-width: 374px){
+  .pgMenu__head{ padding: 10px; }
+  .pgMenu__title{ font-size: .9rem; }
+  .secBtn{ min-width: 215px; }
+  .panelItem__label{ font-size: 12.5px; }
 }
 
-@media (max-width: 620px){
-  .pgMenu__head{
-    flex-direction:column;
-    align-items:stretch;
+/* =========================================================
+   RESPONSIVE: TABLETS / LAPTOPS
+========================================================= */
+/* tablets */
+@media (min-width: 768px){
+  .pgMenu__body{
+    grid-template-columns: 320px 1fr;
   }
-  .pgMenu__quick{ justify-content:flex-start; }
-  .secBtn__desc{ display:none; } /* móvil: más limpio */
+
+  .secBtn__desc{
+    display: block;
+  }
+}
+
+/* desktops grandes */
+@media (min-width: 1200px){
+  .pgMenu__body{
+    grid-template-columns: 360px 1fr;
+  }
+
+  .pgMenu__head{
+    padding: 16px 18px;
+  }
+}
+
+/* =========================================================
+   EXTRA: mejora de accesibilidad en touch
+========================================================= */
+@media (max-width: 767px){
+  .secBtn, .panelItem{
+    min-height: 44px; /* área recomendada */
+  }
 }

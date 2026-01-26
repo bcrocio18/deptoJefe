@@ -1,7 +1,7 @@
 :host{
   display:block;
 
-  /* ===== PALETA UNAH (ajustable) ===== */
+  /* ===== PALETA UNAH ===== */
   --unah-blue: #0b4f86;
   --unah-blue-2: #083e6a;
   --unah-gold: #f2b705;
@@ -20,22 +20,20 @@
   margin: 12px 0;
 }
 
-.card__body.isHidden{
-  padding: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-
+/* =========================================================
+   CARD BASE
+========================================================= */
 .card{
+  width: 100%;
+  min-width: 0;
   margin-top: 12px;
+
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 18px;
   overflow: hidden;
+
   box-shadow: 0 10px 30px rgba(2, 6, 23, .08);
-  width: 100%;
-  min-width: 0;
 }
 
 .card::before{
@@ -45,10 +43,14 @@
   background: linear-gradient(90deg, var(--unah-gold), var(--unah-gold));
 }
 
+/* =========================================================
+   HEADER
+========================================================= */
 .card__header{
-  padding: 12px 16px; /* más compacto */
+  padding: 12px 16px;
   background: linear-gradient(180deg, #ffffff, #f7fbff);
   border-bottom: 1px solid var(--line);
+
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -68,46 +70,53 @@
   border-radius: 12px;
   display:grid;
   place-items:center;
+
   background: #fff;
   border: 1px solid rgba(11,79,134,.18);
   color: var(--unah-blue-2);
   flex: 0 0 auto;
 }
 
+.iconBadge svg{
+  width: 20px;
+  height: 20px;
+}
+
+/* título + caret */
+.titleToggle{
+  all: unset;
+  display:inline-flex;
+  align-items:center;
+  gap: 6px;
+  cursor:pointer;
+
+  min-width: 0;
+  max-width: 100%;
+}
+
 .card__title{
-  font-weight: 800;
+  font-weight: 900;
   font-size: 14px;
   color: var(--unah-blue-2);
   letter-spacing: .2px;
+
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* ===== TÍTULO + TOGGLE PEGADO ===== */
-.titleToggle{
-  all: unset;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  min-width: 0;
-  max-width: 100%;
-}
-
 .caret{
   font-size: 14px;
-  transition: transform .2s ease;
   line-height: 1;
   color: var(--unah-blue-2);
+  transition: transform .2s ease;
   flex: 0 0 auto;
 }
+.caret.rotate{ transform: rotate(180deg); }
 
-.caret.rotate{
-  transform: rotate(180deg);
-}
-
-/* ===== HEADER ACCIONES (PDF + CENSO + PARCIALES) ===== */
+/* =========================================================
+   HEADER ACTIONS
+========================================================= */
 .headerActions{
   display:flex;
   align-items:center;
@@ -115,23 +124,27 @@
   flex: 0 0 auto;
 }
 
-/* Pastillitas pequeñas */
+/* pastillas */
 .actionMini{
   display:inline-flex;
   align-items:center;
   gap: 6px;
+
   padding: 6px 10px;
   border-radius: 10px;
+
   border: 1px solid rgba(11,79,134,.20);
   background: #ffffff;
   color: var(--unah-blue-2);
   text-decoration:none;
   cursor:pointer;
+
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: .2px;
-  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
   white-space: nowrap;
+
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
 }
 
 .actionMini:hover{
@@ -141,6 +154,7 @@
   background: #f7fbff;
 }
 
+/* variante doradita (ghost) */
 .actionMini.ghost{
   background: linear-gradient(180deg, #fff, #fff7df);
   color: #0b2e4d;
@@ -148,28 +162,32 @@
   box-shadow: 0 8px 16px rgba(242,183,5,.10);
 }
 
-.miniIcon{
-  font-size: 14px;
-  line-height: 1;
-}
-
-.miniText{
-  line-height: 1;
-}
-
+.miniIcon{ font-size: 14px; line-height: 1; }
+.miniText{ line-height: 1; }
 .miniMeta{
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--muted);
   line-height: 1;
 }
 
-/* ===== BODY ===== */
+/* =========================================================
+   BODY + COLLAPSE
+========================================================= */
 .card__body{
   padding: 18px;
 }
 
-/* ===== ACORDEÓN DEL PERFIL ===== */
+/* colapsa el body */
+.card__body.isHidden{
+  padding: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* =========================================================
+   PROFILE ACCORDION
+========================================================= */
 .profileWrap{
   max-height: 0;
   overflow: hidden;
@@ -184,7 +202,7 @@
   padding-top: 10px;
 }
 
-/* ===== PROFILE ===== */
+/* grid perfil */
 .profileGrid{
   display:grid;
   grid-template-columns: 130px 1fr;
@@ -203,7 +221,8 @@
   width: 110px;
   height: 110px;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 999px;
+
   border: 4px solid #fff;
   box-shadow:
     0 0 0 3px rgba(11,79,134,.18),
@@ -214,15 +233,17 @@
   position:absolute;
   bottom: 8px;
   right: 8px;
+
   width: 16px;
   height: 16px;
   border-radius: 999px;
+
   background: #22c55e;
   border: 3px solid #ffffff;
   box-shadow: 0 6px 12px rgba(34,197,94,.30);
 }
 
-/* ===== INFO CARD ===== */
+/* info */
 .infoCard{
   background: linear-gradient(180deg, #ffffff, #f7fbff);
   border: 1px solid rgba(11,79,134,.14);
@@ -234,15 +255,15 @@
   display:grid;
   grid-template-columns: 150px 1fr;
   gap: 10px;
+
   padding: 10px 0;
   border-bottom: 1px solid rgba(100,116,139,.18);
 }
-
 .kv:last-child{ border-bottom:none; }
 
 .k{
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: .6px;
   color: var(--unah-blue);
@@ -250,95 +271,76 @@
 
 .v{
   font-size: 13.5px;
-  font-weight: 700;
+  font-weight: 800;
   color: #111827;
   line-height: 1.25;
   word-break: break-word;
 }
 
-/* ===== BOTONES GRANDES ABAJO (YA NO SE USAN) ===== */
-.btnRow{ display:none; }
+/* =========================================================
+   RESPONSIVE – Mobile first + escalas reales
+========================================================= */
 
-/* ===== RESPONSIVE ===== */
+/* ===== XL desktops grandes (>= 1280) ===== */
+@media (min-width: 1280px){
+  .card__header{ padding: 14px 18px; }
+  .card__body{ padding: 20px; }
+  .card__title{ font-size: 15px; }
+}
 
-/* Tablet: 768px - 1024px */
-@media (max-width: 1024px) {
-  .card {
-    margin-top: 10px;
+/* ===== LG (<= 1024px) tablets/laptops ===== */
+@media (max-width: 1024px){
+  :host{ margin: 10px 0; }
+
+  .card{
     border-radius: 16px;
     box-shadow: 0 8px 25px rgba(2, 6, 23, .06);
   }
 
-  .card__header {
-    padding: 12px 14px;
-    gap: 10px;
-  }
+  .card__header{ padding: 12px 14px; gap: 10px; }
+  .card__body{ padding: 16px; }
 
-  .card__body {
-    padding: 16px;
-  }
+  .profileGrid{ grid-template-columns: 120px 1fr; gap: 16px; }
 
-  .profileGrid {
-    grid-template-columns: 120px 1fr;
-    gap: 16px;
-  }
+  .avatarContainer{ width: 100px; height: 100px; }
+  .profileAvatar{ width: 100px; height: 100px; border-width: 3px; }
+  .statusDot{ width: 14px; height: 14px; border-width: 2px; }
 
-  .avatarContainer {
-    width: 100px;
-    height: 100px;
-  }
+  .kv{ grid-template-columns: 140px 1fr; gap: 8px; padding: 8px 0; }
+  .v{ font-size: 13px; }
 
-  .profileAvatar {
-    width: 100px;
-    height: 100px;
-    border-width: 3px;
-  }
-
-  .statusDot {
-    width: 14px;
-    height: 14px;
-    border-width: 2px;
-  }
-
-  .kv {
-    grid-template-columns: 140px 1fr;
-    gap: 8px;
-    padding: 8px 0;
-  }
-
-  .v {
-    font-size: 13px;
-  }
-
-  .actionMini{
-    padding: 6px 9px;
-    border-radius: 10px;
-  }
-
-  .miniMeta{
-    display:none; /* en tablet ya no estorba */
-  }
+  /* compacta acciones */
+  .actionMini{ padding: 6px 9px; }
+  .miniMeta{ display:none; }
 }
 
-/* Móviles */
-@media (max-width: 767px) {
-  :host { margin: 8px 0; }
+/* ===== MD/SM móviles (<= 767px) ===== */
+@media (max-width: 767px){
+  :host{ margin: 8px 0; }
 
-  .card {
-    margin-top: 8px;
+  .card{
     border-radius: 14px;
     box-shadow: 0 6px 20px rgba(2, 6, 23, .05);
+    margin-top: 8px;
   }
 
   .card__header{
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
+    padding: 12px 14px;
   }
 
   .card__bar{
     justify-content: space-between;
   }
+
+  .iconBadge{
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+  .iconBadge svg{ width: 18px; height: 18px; }
 
   .card__title{
     font-size: 13px;
@@ -350,15 +352,23 @@
   .headerActions{
     justify-content: flex-end;
     flex-wrap: wrap;
+    gap: 8px;
   }
 
-  .miniMeta{
-    display:none;
+  .actionMini{
+    /* mejor toque en móvil */
+    min-height: 40px;
+    padding: 9px 10px;
+    border-radius: 12px;
   }
 
+  /* cuerpo */
+  .card__body{ padding: 14px; }
+
+  /* perfil en una sola columna */
   .profileGrid{
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
   }
 
   .profileLeft{
@@ -366,458 +376,222 @@
     justify-content:center;
   }
 
-  .avatarContainer{
-    width: 100px;
-    height: 100px;
-  }
+  .avatarContainer{ width: 96px; height: 96px; }
+  .profileAvatar{ width: 96px; height: 96px; }
 
+  /* info: key arriba, value abajo */
   .kv{
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
-}
-
-/* Celulares pequeños */
-@media (max-width: 575px) {
-  .card__header { padding: 10px 12px; }
-  .card__body { padding: 14px 12px; }
-
-  .avatarContainer { width: 90px; height: 90px; }
-  .profileAvatar { width: 90px; height: 90px; }
-}
-
-/* ===== RESPONSIVE ===== */
-
-/* Tablet: 768px - 1024px */
-@media (max-width: 1024px) {
-  .card {
-    margin-top: 10px;
-    border-radius: 16px;
-    box-shadow: 0 8px 25px rgba(2, 6, 23, .06);
-  }
-  
-  .card__header {
-    padding: 12px 16px;
-    gap: 10px;
-  }
-  
-  .card__body {
-    padding: 16px;
-  }
-  
-  .profileGrid {
-    grid-template-columns: 120px 1fr;
-    gap: 16px;
-  }
-  
-  .avatarContainer {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .profileAvatar {
-    width: 100px;
-    height: 100px;
-    border-width: 3px;
-  }
-  
-  .statusDot {
-    width: 14px;
-    height: 14px;
-    border-width: 2px;
-  }
-  
-  .infoCard {
-    padding: 10px 12px;
-    border-radius: 12px;
-  }
-  
-  .kv {
-    grid-template-columns: 140px 1fr;
-    gap: 8px;
-    padding: 8px 0;
-  }
-  
-  .k {
-    font-size: 10.5px;
-    letter-spacing: 0.5px;
-  }
-  
-  .k svg {
-    width: 12px;
-    height: 12px;
-  }
-  
-  .v {
-    font-size: 13px;
-  }
-  
-  .btnRow {
-    margin-top: 10px;
-  }
-  
-  .btn {
-    min-width: 180px;
-    padding: 10px 12px;
-    font-size: 11.5px;
-  }
-  
-  .btn svg {
-    width: 14px;
-    height: 14px;
-  }
-  
-  /* Ajustes para el PDF link en tablet */
-  .pdfLink {
-    padding: 7px 10px;
-    border-radius: 10px;
-  }
-  
-  .pdfIcon {
-    width: 28px;
-    height: 28px;
-  }
-  
-  .pdfIcon svg {
-    width: 12px;
-    height: 12px;
-  }
-  
-  .pdfText {
-    font-size: 11px;
-  }
-  
-  .pdfSize {
-    font-size: 10px;
-  }
-}
-
-/* Celulares grandes: 576px - 767px */
-@media (max-width: 767px) {
-  :host {
-    margin: 8px 0;
-  }
-  
-  .card {
-    margin-top: 8px;
-    border-radius: 14px;
-    box-shadow: 0 6px 20px rgba(2, 6, 23, .05);
-  }
-  
-  .card__header {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 12px 14px;
-    gap: 12px;
-  }
-  
-  .card__bar {
-    justify-content: space-between;
-  }
-  
-  .iconBadge {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-  }
-  
-  .iconBadge svg {
-    width: 18px;
-    height: 18px;
-  }
-  
-  .card__title {
-    font-size: 13px;
-    white-space: normal;
-    overflow: visible;
-    text-overflow: clip;
-  }
-  
-  .profileGrid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  .profileLeft {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .avatarContainer {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .infoCard {
-    margin-top: 8px;
-  }
-  
-  .kv {
     grid-template-columns: 1fr;
     gap: 4px;
     padding: 10px 0;
   }
-  
-  .k {
-    font-size: 10px;
-    letter-spacing: 0.4px;
-    display: flex;
+}
+
+/* ===== XS teléfonos pequeños (<= 575px) ===== */
+@media (max-width: 575px){
+  .card__header{ padding: 10px 12px; }
+  .card__body{ padding: 12px; }
+
+  .actionMini{
+    font-size: 11px;
+    padding: 9px 10px;
+  }
+
+  .avatarContainer{ width: 88px; height: 88px; }
+  .profileAvatar{ width: 88px; height: 88px; }
+  .statusDot{ width: 12px; height: 12px; bottom: 6px; right: 6px; }
+}
+
+/* ===== XXS (<= 374px) iPhone SE viejo ===== */
+@media (max-width: 374px){
+  .card::before{ height: 3px; }
+  .card__header{ padding: 8px 10px; }
+  .card__body{ padding: 10px; }
+
+  .iconBadge{ width: 32px; height: 32px; border-radius: 9px; }
+  .iconBadge svg{ width: 16px; height: 16px; }
+
+  .card__title{ font-size: 12px; line-height: 1.25; }
+
+  .actionMini{
+    min-height: 38px;
+    padding: 8px 9px;
+    border-radius: 11px;
+  }
+
+  .avatarContainer{ width: 80px; height: 80px; }
+  .profileAvatar{ width: 80px; height: 80px; }
+}
+
+/* ===== ORIENTACIÓN: landscape (móvil horizontal) ===== */
+@media (max-width: 767px) and (orientation: landscape){
+  .card__header{
+    flex-direction: row;
     align-items: center;
-    gap: 6px;
   }
-  
-  .k svg {
-    width: 11px;
-    height: 11px;
+
+  .headerActions{
+    justify-content: flex-end;
   }
-  
-  .v {
-    font-size: 12.5px;
-    padding-left: 17px; /* Para alinear con iconos */
-  }
-  
-  .btnRow {
-    flex-direction: column;
-    margin-top: 16px;
+
+  .profileGrid{
+    grid-template-columns: 110px 1fr;
     gap: 12px;
   }
-  
-  .btn {
-    width: 100%;
-    min-width: auto;
-    padding: 12px 16px;
-    font-size: 12px;
-  }
-  
-  /* PDF link en vertical para móviles */
-  .pdfLink {
-    width: 100%;
-    justify-content: space-between;
-    padding: 10px 14px;
+
+  .avatarContainer{ width: 80px; height: 80px; }
+  .profileAvatar{ width: 80px; height: 80px; }
+
+  .kv{
+    grid-template-columns: 120px 1fr;
+    gap: 8px;
   }
 }
 
-/* Celulares pequeños: 375px - 575px */
-@media (max-width: 575px) {
-  .card {
-    border-radius: 12px;
-    margin-top: 6px;
+/* ===== Accesibilidad: reduce motion ===== */
+@media (prefers-reduced-motion: reduce){
+  .profileWrap,
+  .caret,
+  .actionMini{
+    transition: none !important;
   }
-  
-  .card__header {
-    padding: 10px 12px;
+}
+
+/* ===== iOS text adjust ===== */
+@media (max-width: 767px){
+  :host{
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
-  
-  .card__body {
-    padding: 14px 12px;
+}
+
+/* =========================================================
+   FIX: en móvil, avatar al lado (no arriba)
+========================================================= */
+@media (max-width: 767px){
+  /* Fuerza 2 columnas: avatar + datos */
+  .profileGrid{
+    grid-template-columns: 92px 1fr;  /* avatar | info */
+    gap: 12px;
+    align-items: start;
   }
-  
-  .avatarContainer {
-    width: 90px;
-    height: 90px;
+
+  /* Quita el centrado que lo empuja a “modo arriba” */
+  .profileLeft{
+    display:block;
   }
-  
-  .profileAvatar {
-    width: 90px;
-    height: 90px;
-    border-width: 3px;
+
+  /* Avatar más pequeño para que quepa bonito */
+  .avatarContainer{
+    width: 84px;
+    height: 84px;
+    margin: 0;               /* ya no centrado */
   }
-  
-  .statusDot {
+
+  .profileAvatar{
+    width: 84px;
+    height: 84px;
+  }
+
+  .statusDot{
     width: 12px;
     height: 12px;
     bottom: 6px;
     right: 6px;
+    border-width: 2px;
   }
-  
-  .infoCard {
-    padding: 8px 10px;
-    border-radius: 10px;
+
+  /* Info card que se adapte bien */
+  .infoCard{
+    padding: 10px 12px;
+    border-radius: 12px;
   }
-  
-  .kv {
+
+  /* Key/Value compactos sin romper */
+  .kv{
+    grid-template-columns: 1fr; /* k arriba, v abajo */
+    gap: 3px;
     padding: 8px 0;
   }
-  
-  .k {
-    font-size: 9.5px;
-  }
-  
-  .v {
-    font-size: 12px;
-    padding-left: 16px;
-  }
-  
-  .btn {
-    padding: 10px 14px;
-    font-size: 11.5px;
-  }
-  
-  .btn svg {
-    width: 13px;
-    height: 13px;
-  }
-  
-  /* Optimización de texto largo */
-  .card__title {
-    font-size: 12px;
-    line-height: 1.3;
-  }
-  
-  .v {
-    word-break: break-word;
-    line-height: 1.4;
-  }
-}
 
-/* Celulares muy pequeños: hasta 374px */
-@media (max-width: 374px) {
-  .card::before {
-    height: 3px;
-  }
-  
-  .card__header {
-    padding: 8px 10px;
-  }
-  
-  .card__body {
-    padding: 12px 10px;
-  }
-  
-  .avatarContainer {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .profileAvatar {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .iconBadge {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-  }
-  
-  .iconBadge svg {
-    width: 16px;
-    height: 16px;
-  }
-  
-  .pdfLink {
-    padding: 8px 10px;
-  }
-  
-  .pdfIcon {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .pdfIcon svg {
-    width: 10px;
-    height: 10px;
-  }
-  
-  .pdfText {
+  .k{
     font-size: 10px;
   }
-  
-  .pdfSize {
-    font-size: 9px;
-  }
-  
-  .infoCard {
-    padding: 6px 8px;
-  }
-  
-  .kv {
-    padding: 6px 0;
-  }
-  
-  .k {
-    font-size: 9px;
-  }
-  
-  .k svg {
-    width: 10px;
-    height: 10px;
-  }
-  
-  .v {
-    font-size: 11px;
-    padding-left: 14px;
-  }
-  
-  .btn {
-    padding: 9px 12px;
-    font-size: 11px;
-    border-radius: 10px;
+
+  .v{
+    font-size: 12.5px;
   }
 }
 
-/* Orientación landscape en móviles */
-@media (max-width: 767px) and (orientation: portrait) {
-  .profileGrid {
-    grid-template-columns: 100px 1fr;
-    gap: 12px;
+/* Extra: teléfonos bien chiquitos (iPhone SE) */
+@media (max-width: 374px){
+  .profileGrid{
+    grid-template-columns: 78px 1fr;
+    gap: 10px;
   }
-  
-  .avatarContainer {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .profileAvatar {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .infoCard {
-    margin-top: 0;
-  }
-  
-  .kv {
-    grid-template-columns: 120px 1fr;
-  }
-  
-  .v {
-    padding-left: 0;
-  }
-  
-  .btnRow {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  
-  .btn {
-    min-width: calc(50% - 5px);
+
+  .avatarContainer,
+  .profileAvatar{
+    width: 74px;
+    height: 74px;
   }
 }
 
-/* Ajustes para mejorar la legibilidad en pantallas pequeñas */
-@media (max-width: 767px) {
-  :host {
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
+/* =========================================================
+   CENTRAR PERFIL (avatar + datos) en móvil
+========================================================= */
+@media (max-width: 767px){
+  /* Centra todo el bloque del perfil */
+  .profileInner{
+    display: flex;
+    justify-content: center;
   }
-  
-  /* Asegurar que el texto no sea demasiado pequeño */
-  * {
-    min-height: 0.01px; /* Para evitar bugs de rendering en iOS */
-  }
-  
-  /* Mejorar tapping en móviles */
-  .btn, .pdfLink {
-    -webkit-tap-highlight-color: rgba(11, 79, 134, 0.1);
-  }
-  
-  /* Aumentar área de toque en móviles */
-  .btn {
-    min-height: 44px; /* Tamaño mínimo recomendado para toque */
-  }
-  
-  .kv {
-    min-height: 36px; /* Para evitar elementos demasiado juntos */
+
+  /* Limita ancho para que no se pegue a los bordes */
+  .profileGrid{
+    max-width: 360px;   /* control visual */
+    width: 100%;
+    margin: 0 auto;     /* centra horizontalmente */
   }
 }
+
+/* Extra fino para móviles pequeños */
+@media (max-width: 374px){
+  .profileGrid{
+    max-width: 320px;
+  }
+}
+
+/* =========================================================
+   FIX: centrar el bloque (avatar + tarjeta) en móvil
+========================================================= */
+@media (max-width: 767px){
+
+  /* el acordeón se vuelve contenedor centrador */
+  .card__body .profileWrap.isOpen{
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  /* el inner ocupa 100% pero centra el contenido */
+  .card__body .profileWrap.isOpen .profileInner{
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  /* el grid ya no “se estira” infinito: se centra y se limita */
+  .card__body .profileWrap.isOpen .profileGrid{
+    width: 100% !important;
+    max-width: 380px !important;  /* subilo/bajalo a gusto */
+    margin: 0 auto !important;
+  }
+}
+
+/* extra: iPhone SE / pantallas mini */
+@media (max-width: 374px){
+  .card__body .profileWrap.isOpen .profileGrid{
+    max-width: 330px !important;
+  }
+}
+
